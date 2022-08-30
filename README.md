@@ -28,7 +28,12 @@ git push -u origin main
 
 同时在github仓库Settings->Pages设置build分支为deploy分支
 
-#### 5.打包部署项目
+### 5.安装部署依赖
+```
+npm install hexo-deployer-git --save
+```
+
+#### 6.打包部署项目
 ```
 npm run clean
 npm run build
