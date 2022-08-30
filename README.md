@@ -26,7 +26,7 @@ git commit -m "Initial commit"
 git push -u origin main
 ```
 
-同时在github仓库Settings-Pages设置build分支为deploy分支
+同时在github仓库Settings->Pages设置build分支为deploy分支
 
 #### 5.打包部署项目
 ```
@@ -34,7 +34,7 @@ npm run clean
 npm run build
 npm run deploy
 ```
-部署完成后就可以在Settings-Pages内看到访问地址了
+部署完成后就可以在Settings->Pages内看到访问地址了
 https://vanterc.github.io/myblog/
 
 
