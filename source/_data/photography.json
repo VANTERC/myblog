@@ -1,0 +1,16 @@
+[
+  {
+    "thumbnail": "https://thumbnail.jpg",
+    "photo": "https://photo.jpg",
+    "title": "This is title.",
+    "icon": "camera",
+    "place": "China"
+  },
+  {
+    "thumbnail": "https://thumbnail.jpg",
+    "photo": "https://photo.jpg",
+    "title": "This is title.",
+    "icon": "camera",
+    "place": "China"
+  }
+]

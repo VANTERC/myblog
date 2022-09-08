@@ -5,6 +5,7 @@ tags:
 ---
 
 实现的方式是上传图片file->获取base64->转化为canvas->canvas压缩后转化为base64->base64转化为file
+<!-- more -->
 ```html
 <template>
   <div>

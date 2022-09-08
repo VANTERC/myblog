@@ -1,0 +1,24 @@
+[
+  {
+      "category": "新技术",
+      "data": [
+          {
+              "name": "stackblitz",
+              "url": "https://stackblitz.com"
+          },
+          {
+              "name": "serverless-devs",
+              "url": "http://www.serverless-devs.com/"
+          }
+      ]
+  },
+  {
+      "category": "工具",
+      "data": [
+        {
+            "name": "图片处理",
+            "url": "https://imagestool.com/zh_CN/index.html"
+        }
+      ]
+  }
+]

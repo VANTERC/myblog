@@ -6,6 +6,7 @@ tags:
 
 首先在vscode内安装插件[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 在你的项目里新建下面文件
+<!-- more -->
 .prettierrc.js
 ```javascript
 module.exports = {

@@ -6,6 +6,7 @@ tags:
 ## 1、项目中配置
 Vue-cli3.0项目
 安装依赖：compression-webpack-plugin
+<!-- more -->
 ```bash
 npm install compression-webpack-plugin --save-dev
 ```

@@ -1,6 +1,7 @@
 ---
 title: 利用腾讯云cloudbase快速搭建vue项目到发布
 date: 2022-01-28 15:43
+sticky: 100
 tags:
 ---
 ## 前言
@@ -10,7 +11,7 @@ tags:
 ## 搭建环境
 ### 一、开通环境
 进入[云开发 CloudBase 控制台](https://console.cloud.tencent.com/tcb)开通CloudBase，腾讯云直接微信扫码登录注册就行。
-
+<!-- more -->
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350234186.png)
 
 选择vue应用模板；

@@ -7,6 +7,7 @@ tags:
 # egg 写一个最简单的token登陆验证
 
 首先看完整的目录结构
+<!-- more -->
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg1.png)
 主要实现的功能是通过账号密码登录获取token，再通过token来获取用户信息，一共两个接口：登陆接口和获取用户信息接口。
 上一篇文章已经写到了如何写一个最简单的获取mysql用户信息的接口，现在直接在上一篇文章的基础上做token验证登陆。

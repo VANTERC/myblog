@@ -7,6 +7,7 @@ tags:
 # egg 写一个最简单的mysql查询接口
 
 按照[egg官网](https://eggjs.org/zh-cn/intro/quickstart.html) 写一个最简单的mysql查询接口(提前准备好mysql数据库)
+<!-- more -->
 1、创建项目 安装依赖
 ```bash
 mkdir my-study-backend

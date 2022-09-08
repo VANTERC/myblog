@@ -5,6 +5,7 @@ tags:
 ---
 [vue3.0](https://v3.cn.vuejs.org/)发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了-----组合式API。
 尝试通过尤大最新发布的前端构建工具[Vite](https://cn.vitejs.dev/)(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：
+<!-- more -->
 ![carbon 2.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(2)_1624615490869.png)
 #### [Setup](https://v3.cn.vuejs.org/guide/composition-api-introduction.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E5%90%88%E5%BC%8F-api)  
 可以看到在script标签旁边多了setup，那么具体是做什么作用呢？

@@ -3,6 +3,9 @@ title: 理解vue3组合式API  Setup（二）
 date: 2021-07-05 14:27
 tags:
 ---
+
+### 理解vue3组合式API Setup（二）
+<!-- more -->
 ### Props
 ![carbon 11.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(11)_1625540082237.png)
 创建一个子组件，在子组件内监听父组件计数器。

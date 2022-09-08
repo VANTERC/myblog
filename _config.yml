@@ -44,7 +44,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-linear
+theme: hexo-theme-aomori
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -105,3 +105,37 @@ deploy:
   type: git
   repo: https://github.com/VANTERC/myblog.git
   branch: deploy
+
+# hexo-theme-aomori主题配置
+aomori_menu:
+  首页: /
+  文章: /archives
+  相册: /photography
+  收藏: /collection
+aomori_logo: https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG  
+aomori_logo_typed_animated: true
+aomori_widgets:
+  - toc # 文章导航
+  - category  #文章分类
+  - tag # 文章标签
+  - recent_posts  # 最新文章
+  - archive #文章归档
+aomori_copyright: true
+aomori_social:
+  -
+    icon: logo-github
+    url: https://github.com/VANTERC
+aomori_baidu_sitepush: true
+aomori_busuanzi: true
+aomori_favicon: 🎮
+aomori_disqus_shortname: 'www-vanterc-com'
+aomori_disqusjs:
+  enable: true
+  shortname: "www-vanterc-com"
+  siteName: "www.vanterc.com"
+  api: "https://disqus.skk.moe/disqus/"
+  apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh"
+  nesting: 4
+  nocomment: "这里冷冷清清的，一条评论都没有"
+  admin: "VANTERC"
+  adminLabel: ""

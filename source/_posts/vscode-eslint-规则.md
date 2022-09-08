@@ -3,7 +3,8 @@ title: vscode eslint 规则
 date: 2021-02-25 18:01
 tags:
 ---
-
+### vscode eslint 规则
+<!-- more -->
 ```javascript
 "no-alert": 0,//禁止使用alert confirm prompt
 "no-array-constructor": 2,//禁止使用数组构造器

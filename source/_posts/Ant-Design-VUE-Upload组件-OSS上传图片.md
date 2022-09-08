@@ -8,7 +8,7 @@ tags:
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png)
 之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头'Content-Type': 'multipart/form-data'来上传的，现在直接用自带的action上传还是挺方便的。
 
-
+<!-- more -->
 ```js
 <template>
 	<a-upload
