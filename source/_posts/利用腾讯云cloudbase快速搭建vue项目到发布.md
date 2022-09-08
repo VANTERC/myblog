@@ -8,10 +8,10 @@ tags:
 利用腾讯云的serverless技术--[cloudbase](https://docs.cloudbase.net/)快速搭建项目到部署发布。
 作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；
 现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。
+<!-- more -->
 ## 搭建环境
 ### 一、开通环境
 进入[云开发 CloudBase 控制台](https://console.cloud.tencent.com/tcb)开通CloudBase，腾讯云直接微信扫码登录注册就行。
-<!-- more -->
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350234186.png)
 
 选择vue应用模板；
