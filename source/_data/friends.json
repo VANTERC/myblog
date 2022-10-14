@@ -1,24 +1,248 @@
 [
-  {
-      "category": "新技术",
-      "data": [
-          {
-              "name": "stackblitz",
-              "url": "https://stackblitz.com"
-          },
-          {
-              "name": "serverless-devs",
-              "url": "http://www.serverless-devs.com/"
-          }
-      ]
-  },
-  {
-      "category": "工具",
-      "data": [
-        {
-            "name": "图片处理",
-            "url": "https://imagestool.com/zh_CN/index.html"
-        }
-      ]
-  }
+    {
+        "category": "技术",
+        "data": [
+            {
+                "name": "stackblitz",
+                "url": "https://stackblitz.com"
+            },
+            {
+                "name": "serverless-devs",
+                "url": "http://www.serverless-devs.com/"
+            },
+            {
+                "name": "cypress自动化测试",
+                "url": "https://www.cypress.io/"
+            },
+            {
+                "name": "微前端架构",
+                "url": "https://micro-frontends.ice.work/"
+            },
+            {
+                "name": "gin+vue进行极速开发的全栈开发基础平台",
+                "url": "https://www.gin-vue-admin.com/"
+            },
+            {
+                "name": "cloudbase",
+                "url": "https://docs.cloudbase.net/"
+            },
+            {
+                "name": "supabase",
+                "url": "https://supabase.com/"
+            }
+        ]
+    },
+    {
+        "category": "工具",
+        "data": [
+            {
+                "name": "程序员工具集合大全",
+                "url": "https://www.bejson.com/"
+            },
+            {
+                "name": "图片处理",
+                "url": "https://imagestool.com/zh_CN/index.html"
+            },
+            {
+                "name": "免费在线抠图",
+                "url": "https://picwish.cn/"
+            },
+            {
+                "name": "LOGO海报设计",
+                "url": "https://www.canva.cn/"
+            },
+            {
+                "name": "图片无损缩放",
+                "url": "http://waifu2x.udp.jp/"
+            },
+            {
+                "name": "图片格式转换器",
+                "url": "https://renzhezhilu.github.io/webp2jpg-online/"
+            },
+            {
+                "name": "PDF工具集合",
+                "url": "https://tools.pdf24.org/zh/"
+            },
+            {
+                "name": "UI直接生成代码",
+                "url": "https://code.fun/"
+            },
+            {
+                "name": "markdown转公众号知乎",
+                "url": "https://editor.mdnice.com/"
+            },
+            {
+                "name": "油猴脚本库",
+                "url": "https://greasyfork.org/zh-CN"
+            },
+            {
+                "name": "代码片段转图片",
+                "url": "https://ray.so/"
+            },
+            {
+                "name": "nginx配置器",
+                "url": "https://www.digitalocean.com/community/tools/nginx?global.app.lang=zhCN"
+            },
+            {
+                "name": "前端插件库",
+                "url": "https://awesomejs.dev/"
+            },
+            {
+                "name": "独特工具箱啥都有",
+                "url": "https://www.dute.org/"
+            },
+            {
+                "name": "url编码解码",
+                "url": "http://www.jsons.cn/urlencode"
+            },
+            {
+                "name": "菜鸟工具(正则测试等)",
+                "url": "https://c.runoob.com/front-end/854/"
+            },
+            {
+                "name": "JSON编辑器格式化",
+                "url": "https://www.jsont.run/"
+            },
+            {
+                "name": "七夜导航各类工具集",
+                "url": "https://nav.qinight.com/"
+            },
+            {
+                "name": "生活百科wiki",
+                "url": "https://zh.wikihow.com/"
+            },
+            {
+                "name": "表情包搜索网站",
+                "url": "https://www.dbbqb.com/"
+            },
+            {
+                "name": "果汁工具大全(生活类)",
+                "url": "http://guozhivip.com/tool/"
+            },
+            {
+                "name": "谷歌插件国内下载",
+                "url": "https://chrome.zzzmh.cn"
+            },
+            {
+                "name": "PDF/图片/视频/音频/格式转换",
+                "url": "https://www.aconvert.com/cn/"
+            },
+            {
+                "name": "JSON转各类代码",
+                "url": "https://app.quicktype.io/"
+            },
+            {
+                "name": "markdown笔记",
+                "url": "https://yank-note.vercel.app"
+            }
+        ]
+    },
+    {
+        "category": "素材",
+        "data": [
+            {
+                "name": "免费壁纸",
+                "url": "https://wallpaperhub.app"
+            },
+            {
+                "name": "UI设计库",
+                "url": "https://screenlane.com/"
+            },
+            {
+                "name": "摄图网",
+                "url": "https://699pic.com/"
+            }
+        ]
+    },
+    {
+        "category": "学习",
+        "data": [
+            {
+                "name": "面试基础知识",
+                "url": "https://micro-frontends.ice.work/"
+            },
+            {
+                "name": "各类语言框架语法大全查询",
+                "url": "https://socode.pro/"
+            },
+            {
+                "name": "前端人俱乐部",
+                "url": "http://f2er.club/"
+            },
+            {
+                "name": "vue3+ts",
+                "url": "https://24kcs.github.io/vue3_study/"
+            }
+        ]
+    },
+    {
+        "category": "软件",
+        "data": [
+            {
+                "name": "正版软件购买",
+                "url": "https://apsgo.com/"
+            }
+        ]
+    },
+    {
+        "category": "前端",
+        "data": [
+            {
+                "name": "图标库",
+                "url": "https://iconoir.com/"
+            },
+            {
+                "name": "前端大全",
+                "url": "https://docschina.org/"
+            },
+            {
+                "name": "使用 Vue.js 开发小程序的前端框架",
+                "url": "http://mpvue.com/"
+            },
+            {
+                "name": "uviewui",
+                "url": "https://www.uviewui.com/"
+            },
+            {
+                "name": "varlet",
+                "url": "https://varlet.gitee.io/varlet-ui/#/zh-CN/index"
+            },
+            {
+                "name": "vant",
+                "url": "https://vant-contrib.gitee.io/vant/#/zh-CN"
+            },
+            {
+                "name": "tdesign",
+                "url": "https://tdesign.tencent.com/"
+            },
+            {
+                "name": "前端开发UI素材",
+                "url": "https://www.creative-tim.com/"
+            },
+            {
+                "name": "vue-treeselect",
+                "url": "https://www.vue-treeselect.cn/"
+            },
+            {
+                "name": "semi",
+                "url": "https://semi.design/zh-CN/"
+            },
+            {
+                "name": "tailwindcss",
+                "url": "https://www.tailwindcss.cn/"
+            },
+            {
+                "name": "fontawesome图标",
+                "url": "https://fontawesome.com/"
+            },
+            {
+                "name": "vantajs动画",
+                "url": "https://www.vantajs.com/"
+            },
+            {
+                "name": "视差效果pushinjs",
+                "url": "https://nateplusplus.github.io/pushin/"
+            }
+        ]
+    }
 ]
