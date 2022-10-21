@@ -134,6 +134,18 @@
             {
                 "name": "markdown笔记",
                 "url": "https://yank-note.vercel.app"
+            },
+            {
+                "name": "网页版API接口调试(界面清爽)",
+                "url": "https://httpie.io/app"
+            },
+            {
+                "name": "在线开发神器手机网页开发同步",
+                "url": "https://replit.com/"
+            },
+            {
+                "name": "在网页上运行安卓app",
+                "url": "https://www.wolfia.com/"
             }
         ]
     },
