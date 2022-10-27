@@ -146,6 +146,14 @@
             {
                 "name": "在网页上运行安卓app",
                 "url": "https://www.wolfia.com/"
+            },
+            {
+                "name": "在线工具开发手机web同步开发",
+                "url": "https://replit.com/"
+            },
+            {
+                "name": "在线http接口调试",
+                "url": "https://httpie.io/app"
             }
         ]
     },
