@@ -8,7 +8,7 @@ tags:
 废话不多说，这个教程很简单直接上图！
 不管是手机还是平板在设置中找到Safari浏览器，找到扩展。
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0270.PNG)
-
+<!-- more -->
 扩展进去之后直接点更多扩展，会跳转到appStore应用商店
 ![image.png](https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0271.PNG)
 
