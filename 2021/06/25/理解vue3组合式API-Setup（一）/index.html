@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>理解vue3组合式API  Setup（一） | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "理解vue3组合式API  Setup（一） | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;" />
+    <meta name="twitter:title" content="理解vue3组合式API  Setup（一） | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "理解vue3组合式API  Setup（一） | VANTERC个人博客",
+            "datePublished": "2021-06-25T08:18:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6inzz000eqg84ak1xffpi" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      理解vue3组合式API  Setup（一）
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-06-25T08:18:00.000Z" itemprop="datePublished">2021-06-25</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/">vue3.0</a>发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。<br>尝试通过尤大最新发布的前端构建工具<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">Vite</a>(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：</p>
+<span id="more"></span>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(2)_1624615490869.png" alt="carbon 2.png"></p>
+<h4 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E5%90%88%E5%BC%8F-api">Setup</a></h4><p>可以看到在script标签旁边多了setup，那么具体是做什么作用呢？<br>首先我们要知道尤大引入组合式api的目的是什么？<br><strong>目的是为了解决复杂业务下代码逻辑的碎片化，以便于更好的阅读和维护。</strong><br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(1)_1624615396489.png" alt="carbon 1.png"><br>我们现将setup理解为一个用来存放你逻辑代码的地方,并且它有2个参数props和context<br>需要注意的一点是：<br>setup在执行时，组件实例尚未被创建，setup 选项中是不存在this的</p>
+<h3 id="在生命周期钩子中调用"><a href="#在生命周期钩子中调用" class="headerlink" title="在生命周期钩子中调用"></a>在生命周期钩子中调用</h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(4)_1625454437233.png" alt="carbon 4.png"><br>在setup中定义一个方法并将其return，然后就可以在mounted中调用，只有return出的变量或者函数，才可以在setup外部被this调用。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(5)_1625454662080.png" alt="carbon 5.png"><br>同样我们也可以这么写，将生命周期函数放入setup中调用，前提是必须注册生命周期方法onMounted<br>选项 API 生命周期选项和组合式 API 之间的映射，详情参加官方api</p>
+<ul>
+<li><p><del>beforeCreate</del> -&gt; use setup()</p>
+</li>
+<li><p><del>created</del> -&gt; use setup()</p>
+</li>
+<li><p>beforeMount -&gt; onBeforeMount</p>
+</li>
+<li><p>mounted -&gt; onMounted</p>
+</li>
+<li><p>beforeUpdate -&gt; onBeforeUpdate</p>
+</li>
+<li><p>updated -&gt; onUpdated</p>
+</li>
+<li><p>beforeUnmount -&gt; onBeforeUnmount</p>
+</li>
+<li><p>unmounted -&gt; onUnmounted</p>
+</li>
+<li><p>errorCaptured -&gt; onErrorCaptured</p>
+</li>
+<li><p>renderTracked -&gt; onRenderTracked</p>
+</li>
+<li><p>renderTriggered -&gt; onRenderTriggered</p>
+</li>
+<li><p>activated -&gt; onActivated</p>
+</li>
+<li><p>deactivated -&gt; onDeactivated</p>
+</li>
+</ul>
+<p>这里要说的一点是setup内，相当于之前的created钩子，也就是说是最先执行的<br>下面来引入一个新的函数</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html#%E5%B8%A6-ref-%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8F%98%E9%87%8F">ref</a></h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(7)_1625455356513.png" alt="carbon 7.png"><br>ref 函数使任何响应式变量在任何地方起作用</p>
+<h3 id="watch监听"><a href="#watch监听" class="headerlink" title="watch监听"></a>watch监听</h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(8)_1625456544045.png" alt="carbon 8.png"><br>我们用ref来定义一个计数器变量，在setup中用watch来监听计数变化</p>
+<h3 id="computed-计算属性"><a href="#computed-计算属性" class="headerlink" title="computed 计算属性"></a>computed 计算属性</h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/carbon%20(9)_1625464411330.png" alt="carbon 9.png"><br>计算属性twiceTheCounter，需要像ref 一样使用 .value 来获取值</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2021/07/05/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          理解vue3组合式API  Setup（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/25/vscode%E6%BC%82%E4%BA%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96prettier/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">vscode漂亮的代码格式化prettier</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

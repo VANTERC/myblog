@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>VANTERC个人博客</title>
+
+    <meta name="description" content="VANTERC个人博客">
+    <meta name="keywords" content="">
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vanterc.github.io/index.html" />
+    <meta property="og:site_name" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "VANTERC"
+            },
+        }
+    </script>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-利用腾讯云cloudbase快速搭建vue项目到发布"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>利用腾讯云的serverless技术–<a target="_blank" rel="noopener" href="https://docs.cloudbase.net/">cloudbase</a>快速搭建项目到部署发布。<br>作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；<br>现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        <div class="article-top">
+            <ion-icon name="arrow-up"></ion-icon>
+        </div>
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-01-28T07:43:00.000Z" itemprop="datePublished">2022-01-28</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-ios手机平板免费看全网爱奇艺、腾讯VIP视频教程！！！"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频教程！！！"><a href="#ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频教程！！！" class="headerlink" title="ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频教程！！！"></a>ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频教程！！！</h2><p>废话不多说，这个教程很简单直接上图！<br>不管是手机还是平板在设置中找到Safari浏览器，找到扩展。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0270.PNG" alt="image.png"></p>
+<p>扩展进去之后直接点更多扩展，会跳转到appStore应用商店<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0271.PNG" alt="image.png"></p>
+<p>在应用商店里找到Stay-用户脚本扩展管理器(油猴)下载安装<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0272.PNG" alt="image.png"></p>
+<p>打开Stay然后点击右上角的加号会弹出4个选项，这里选择“从GreasyFork导入”<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0273.PNG" alt="image.png"></p>
+<p>GreasyFork是一个浏览器脚本库网站，里面有很多浏览器脚本，还有抢购脚本哦~<br>因为是手机和ipad所以我们得选择支持手机和移动端并且是支持Safari浏览器的插件<br>这里我们找到下图第二个“B站哔哩哔哩…”这个脚本，找不到的可以搜索下，或者点击右边总安装数排第二的插件。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0274.PNG" alt="image.png"></p>
+<p>点进去之后可以看下这个插件的详细功能介绍，然后直接安装此脚本。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0275.PNG" alt="image.png"></p>
+<p>提示成功之后，再点击右上角的创建按钮。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0276.PNG" alt="image.png"></p>
+<p>然后显示已激活就说明脚本安装成功了。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/IMG_0277.PNG" alt="image.png"></p>
+<p>然后打开我们的Safari浏览器就可以看到地址栏里已经显示了当前运行的脚本<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0278.PNG" alt="image.png"></p>
+<p>如果没有显示再去设置扩展里看下是否已经打开<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0279.PNG" alt="image.png"></p>
+<p>这时候打开腾讯视频，我们选择一个VIP电影来看下。<br>此时我们是未登录状态下而且提示此片是会员才能看。<br>但视频的左边出现了两个图标一个VIP和一个火箭图标。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0280.PNG" alt="image.png"></p>
+<p>VIP图标我们可以切换视频源地址<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/IMG_0282.PNG" alt="image.png"></p>
+<p>点击火箭图标，直接就能跳转观看超清VIP电影了！<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/IMG_0281.PNG" alt="image.png"></p>
+<p>再也不用花钱看电视啦！</p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-11-02T05:00:00.000Z" itemprop="datePublished">2022-11-02</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-2分钟教你如何免费搭建属于自己的网站或博客"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="2分钟教你如何免费搭建属于自己的网站或博客"><a href="#2分钟教你如何免费搭建属于自己的网站或博客" class="headerlink" title="2分钟教你如何免费搭建属于自己的网站或博客"></a>2分钟教你如何免费搭建属于自己的网站或博客</h2><p>先去<a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云</a>注册一个账号，并且实名认证一下。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220923-143144.png" alt="image.png"></p>
+<p>在阿里云产品与服务里面找到 函数计算FC 直接进入</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-09-23T09:57:00.000Z" itemprop="datePublished">2022-09-23</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-微信小程序云开发"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="微信小程序云开发"><a href="#微信小程序云开发" class="headerlink" title="微信小程序云开发"></a>微信小程序云开发</h2><h3 id="如何利用最快的方式进行小程序的开发？"><a href="#如何利用最快的方式进行小程序的开发？" class="headerlink" title="如何利用最快的方式进行小程序的开发？"></a>如何利用最快的方式进行小程序的开发？</h3><p>传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-09-14T09:57:00.000Z" itemprop="datePublished">2022-09-14</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-解决vue-keepAlive-二次进入页面显示首次缓存问题"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>问题场景：<br>当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-07-26T06:04:00.000Z" itemprop="datePublished">2021-07-26</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-理解vue3组合式API-Setup（二）"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/07/05/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%BA%8C%EF%BC%89/">理解vue3组合式API  Setup（二）</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h3 id="理解vue3组合式API-Setup（二）"><a href="#理解vue3组合式API-Setup（二）" class="headerlink" title="理解vue3组合式API Setup（二）"></a>理解vue3组合式API Setup（二）</h3>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-07-05T06:27:00.000Z" itemprop="datePublished">2021-07-05</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-理解vue3组合式API-Setup（一）"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/">理解vue3组合式API  Setup（一）</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/">vue3.0</a>发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。<br>尝试通过尤大最新发布的前端构建工具<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">Vite</a>(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-06-25T08:18:00.000Z" itemprop="datePublished">2021-06-25</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-vscode漂亮的代码格式化prettier"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/04/25/vscode%E6%BC%82%E4%BA%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96prettier/">vscode漂亮的代码格式化prettier</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>首先在vscode内安装插件<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a><br>在你的项目里新建下面文件</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-04-25T09:57:00.000Z" itemprop="datePublished">2021-04-25</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-vue项目启用压缩gzip"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/04/06/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8%E5%8E%8B%E7%BC%A9gzip/">vue项目启用压缩gzip</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="1、项目中配置"><a href="#1、项目中配置" class="headerlink" title="1、项目中配置"></a>1、项目中配置</h2><p>Vue-cli3.0项目<br>安装依赖：compression-webpack-plugin</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-04-06T03:19:00.000Z" itemprop="datePublished">2021-04-06</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Ant-Design-VUE-Upload组件-OSS上传图片"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/">Ant Design VUE Upload组件 OSS上传图片</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png" alt="image.png"><br>之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-03-12T12:52:00.000Z" itemprop="datePublished">2021-03-12</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

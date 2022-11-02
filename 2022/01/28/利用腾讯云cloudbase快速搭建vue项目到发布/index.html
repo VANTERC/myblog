@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>利用腾讯云cloudbase快速搭建vue项目到发布 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;利用腾讯云的serverless技术–&lt;a href=&#34;https://docs.cloudbase.net/&#34;&gt;cloudbase&lt;/a&gt;快速搭建项目到部署发布。&lt;br&gt;作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；&lt;br&gt;现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "利用腾讯云cloudbase快速搭建vue项目到发布 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;利用腾讯云的serverless技术–&lt;a href=&#34;https://docs.cloudbase.net/&#34;&gt;cloudbase&lt;/a&gt;快速搭建项目到部署发布。&lt;br&gt;作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；&lt;br&gt;现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;利用腾讯云的serverless技术–&lt;a href=&#34;https://docs.cloudbase.net/&#34;&gt;cloudbase&lt;/a&gt;快速搭建项目到部署发布。&lt;br&gt;作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；&lt;br&gt;现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。&lt;/p&gt;" />
+    <meta name="twitter:title" content="利用腾讯云cloudbase快速搭建vue项目到发布 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;利用腾讯云的serverless技术–&lt;a href=&#34;https://docs.cloudbase.net/&#34;&gt;cloudbase&lt;/a&gt;快速搭建项目到部署发布。&lt;br&gt;作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；&lt;br&gt;现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;利用腾讯云的serverless技术–&lt;a href=&#34;https://docs.cloudbase.net/&#34;&gt;cloudbase&lt;/a&gt;快速搭建项目到部署发布。&lt;br&gt;作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；&lt;br&gt;现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "利用腾讯云cloudbase快速搭建vue项目到发布 | VANTERC个人博客",
+            "datePublished": "2022-01-28T07:43:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6inzx000dqg844z8l52zg" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      利用腾讯云cloudbase快速搭建vue项目到发布
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-01-28T07:43:00.000Z" itemprop="datePublished">2022-01-28</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>利用腾讯云的serverless技术–<a target="_blank" rel="noopener" href="https://docs.cloudbase.net/">cloudbase</a>快速搭建项目到部署发布。<br>作为一个前端开发，很多时候因为没有后端服务的接口和数据库支持而一筹莫展；一想到搭建一个项目，还要购买服务器、配置数据库等等就觉得麻烦；<br>现在，腾讯云提供了一种新的快速上线的云架构，让只会前端的同学也能快速开发一个完整的前后端系统，并且能够支持一键部署，快速上线，低成本、高效率的开发。</p>
+<span id="more"></span>
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><h3 id="一、开通环境"><a href="#一、开通环境" class="headerlink" title="一、开通环境"></a>一、开通环境</h3><p>进入<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/tcb">云开发 CloudBase 控制台</a>开通CloudBase，腾讯云直接微信扫码登录注册就行。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350234186.png" alt="image.png"></p>
+<p>选择vue应用模板；</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350311797.png" alt="image.png"></p>
+<p>创建环境名称test，计费的话前期有免费额度，然后点击下一步到开通为止。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350465793.png" alt="image.png"></p>
+<p>点击应用进入环境总览；</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643350571129.png" alt="image.png"></p>
+<p>后面的话主要会用到的就是当前环境的id；</p>
+<h3 id="二、搭建vue前端项目及一键部署"><a href="#二、搭建vue前端项目及一键部署" class="headerlink" title="二、搭建vue前端项目及一键部署"></a>二、搭建vue前端项目及一键部署</h3><h4 id="1、全局安装-CloudBase-CLI"><a href="#1、全局安装-CloudBase-CLI" class="headerlink" title="1、全局安装 CloudBase CLI"></a>1、全局安装 CloudBase CLI</h4><pre><code class="bash">npm install -g @cloudbase/cli@latest
+</code></pre>
+<h4 id="2、创建vue项目"><a href="#2、创建vue项目" class="headerlink" title="2、创建vue项目"></a>2、创建vue项目</h4><pre><code class="bash">npx vue create vue-hello-world
+</code></pre>
+<h4 id="3、发布项目"><a href="#3、发布项目" class="headerlink" title="3、发布项目"></a>3、发布项目</h4><pre><code class="bash">cd vue-hello-world
+cloudbase framework deploy -e test-4g5kb8yja12f81fb
+
+//或者也可以直接输入cloudbase命令回车，test-4g5kb8yja12f81fb 为刚刚创建的环境id
+
+ Tip: cloudbase 命令可以简写为 tcb 
+
+CloudBase CLI 1.12.0
+CloudBase Framework 1.9.0
+   ______ __                   __ ____                             
+  / ____// /____   __  __ ____/ // __ ) ____ _ _____ ___           
+ / /    / // __ \ / / / // __  // __  |/ __ `// ___// _ \          
+/ /___ / // /_/ // /_/ // /_/ // /_/ // /_/ /(__  )/  __/          
+\____//_/_\____/ \__,_/ \__,_//_____/ \__,_//____/ \___/       __  
+   / ____/_____ ____ _ ____ ___   ___  _      __ ____   _____ / /__
+  / /_   / ___// __ `// __ `__ \ / _ \| | /| / // __ \ / ___// //_/
+ / __/  / /   / /_/ // / / / / //  __/| |/ |/ // /_/ // /   / ,&lt;   
+/_/    /_/    \__,_//_/ /_/ /_/ \___/ |__/|__/ \____//_/   /_/|_|  
+                                                                   
+
+ CloudBase Framework  info     Version v1.9.0
+ CloudBase Framework  info     Github: https://github.com/Tencent/cloudbase-framework
+
+ CloudBase Framework  info     EnvId test1-4g5kb8yja12f81fb
+ CloudBase Framework  info     Region ap-shanghai
+? 请输入应用唯一标识(支持 A-Z a-z 0-9 及 -, 同一环境下不能相同) test
+? 检测到当前项目包含 Vue.js 项目
+
+  🔨 构建脚本 `npm run build`
+  📦 本地静态文件目录 `dist`
+
+  是否需要修改默认配置 No
+? 是否需要保存当前项目配置到项目中 Yes
+ CloudBase Framework  info     Validate config file success.
+ CloudBase Framework  info     AppName test
+ CloudBase Framework  info     📦 install plugins
+ CloudBase Framework  info     callHooks &#39;preDeploy&#39; 
+ CloudBase Framework  info     🔧 init: vue...
+ CloudBase Framework  info     Website 插件会自动开启静态网页托管能力，需要当前环境为 [按量计费] 模式
+ CloudBase Framework  info     Website 插件会部署应用资源到当前静态托管的 / 目录下
+ CloudBase Framework  info     🔨 build: vue...
+ CloudBase Framework  info     running &#39;npm install --prefer-offline --no-audit --progress=false&#39; 
+
+up to date in 594ms
+
+11 packages are looking for funding
+  run `npm fund` for details
+ CloudBase Framework  info     running &#39;npm run build&#39; 
+
+&gt; vue-hello-world1@0.1.0 build
+&gt; vue-cli-service build
+
+
+
+
+ DONE  Compiled successfully in 1669ms                                                                                      下午2:34:11
+
+  File                                 Size                                           Gzipped
+
+  dist/js/chunk-vendors.4102dc7c.js    94.96 KiB                                      34.02 KiB
+  dist/js/app.ecf66627.js              4.58 KiB                                       1.63 KiB
+  dist/css/app.fb0c6e1c.css            0.33 KiB                                       0.23 KiB
+
+  Images and other types of assets omitted.
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+      
+ CloudBase Framework  info     🧬 compile: vue...
+ CloudBase Framework  info     callHooks &#39;postCompile&#39; 
+正在部署[░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 100% 100.2 s
+ CloudBase Framework  info     🚀 deploy: vue...
+ CloudBase Framework  info     🚀 网站部署成功
+ CloudBase Framework  info     callHooks &#39;postDeploy&#39; 
+ CloudBase Framework  info     🌐 应用入口信息:
+🔗 网站入口: https://test-4g5kb8yja12f81fb-1256759236.tcloudbaseapp.com/
+ CloudBase Framework  info     ✨ done
+</code></pre>
+<p>部署结束后会生成一个访问地址：🔗 网站入口: <a target="_blank" rel="noopener" href="https://test-4g5kb8yja12f81fb-1256759236.tcloudbaseapp.com/">https://test-4g5kb8yja12f81fb-1256759236.tcloudbaseapp.com/</a></p>
+<p>复制到浏览器地址栏就直接能访问啦~</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643352051889.png" alt="image.png"></p>
+<h3 id="三、配置数据库"><a href="#三、配置数据库" class="headerlink" title="三、配置数据库"></a>三、配置数据库</h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643352786244.png" alt="image.png"></p>
+<p>新建一个名为test的集合数据库；</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643352881859.png" alt="image.png"></p>
+<p>添加文档(创建表)、添加字段</p>
+<h3 id="四、开发项目-前端操作数据库"><a href="#四、开发项目-前端操作数据库" class="headerlink" title="四、开发项目(前端操作数据库)"></a>四、开发项目(前端操作数据库)</h3><p>进入项目根目录，引入cloudbase依赖</p>
+<pre><code class="base">#npm
+npm install @cloudbase/js-sdk -S
+# yarn
+yarn add @cloudbase/js-sdk
+</code></pre>
+<p>编写查询和新增方法</p>
+<pre><code class="js">&lt;template&gt;
+  &lt;button @click=&quot;insert&quot;&gt;插入一条数据&lt;/button&gt;
+  &lt;button @click=&quot;search&quot;&gt;查询数据&lt;/button&gt;
+  &lt;span v-if=&quot;result&quot;&gt;&#123;&#123;result&#125;&#125;&lt;/span&gt;
+&lt;/template&gt;
+
+import cloudbase from &#39;@cloudbase/js-sdk&#39;;
+const app = cloudbase.init(&#123;
+  env: &quot;test-4g5kb8yja12f81fb&quot;
+&#125;);
+const db = app.database();
+
+methods: &#123;
+     search() &#123;
+      let _this = this
+      db.collection(&quot;test&quot;) // collection() 方法获取一个集合的引用
+      .get() // get() 方法会触发网络请求，往数据库取数据
+      .then(function (res) &#123;
+        _this.result = res
+      &#125;);
+    &#125;,		
+    insert()&#123;
+      db.collection(&quot;test&quot;).add(&#123;
+        name: &#39;test&#39;,
+        password: &#39;123456&#39;
+      &#125;).then(res=&gt;&#123;
+        alert( JSON.stringify(res),&quot;插入成功&quot;)
+      &#125;)
+    &#125;
+  &#125;
+</code></pre>
+<p>本地测试接口调用，发现没有权限 Permission denied</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643353831460.png" alt="image.png"></p>
+<h4 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h4><p>进入控制台登录授权<br>官方提供了几种<a target="_blank" rel="noopener" href="https://docs.cloudbase.net/authentication/auth/introduce">登录授权</a><br>当前我们使用未登录模式</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643354158012.png" alt="image.png"></p>
+<p>在根目录下public&#x2F;index.html 初始化cloudbase</p>
+<pre><code class="html">&lt;script src=&quot;//imgcache.qq.com/qcloud/cloudbase-js-sdk/1.6.0/cloudbase.full.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const app = cloudbase.init(&#123;
+    env: &#39;test-4g5kb8yja12f81fb&#39; // 您的环境id
+  &#125;)
+&lt;/script&gt;
+</code></pre>
+<p>但是这样做还是不能访问到数据库，因为还需要配置数据库的读写权限。<br>进入数据库权限设置。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643354016007.png" alt="image.png"></p>
+<p>点击右上角切换到安全规则权限设置，按照如下配置</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643354464046.png" alt="image.png"></p>
+<pre><code class="json">&#123;
+  &quot;read&quot;: &quot;doc._openid == auth.uid || auth == null&quot;,
+  &quot;write&quot;: &quot;doc._openid == auth.uid || auth == null&quot;
+&#125;
+</code></pre>
+<p>此时点击查询数据和查询，就能够顺利调用接口查询到数据了。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643354621900.png" alt="image.png"></p>
+<h3 id="五、发布项目及配置域名"><a href="#五、发布项目及配置域名" class="headerlink" title="五、发布项目及配置域名"></a>五、发布项目及配置域名</h3><p>在根目录下再次输入命令 cloudbase framework deploy</p>
+<pre><code class="bash">cloudbase framework deploy
+</code></pre>
+<p>cloudbase 又会执行npm run build 打包并发布部署到线上环境。</p>
+<h4 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h4><p>进入静态网站托管，进入详细配置。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643355011560.png" alt="image.png"></p>
+<p>点击添加域名</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643355403629.png" alt="image.png"></p>
+<p>域名必须为https协议，所以提前准备好带有证书的域名。</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643355559005.png" alt="image.png"></p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643355656598.png" alt="image.png"></p>
+<p>还需要配置DNS CNAME记录。</p>
+<p>等待部署成功就可以访问啦~<br><a target="_blank" rel="noopener" href="https://test.vanterc.com/">https://test.vanterc.com/</a></p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/image_1643356325651.png" alt="image.png"></p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          微信小程序云开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">解决vue keepAlive 二次进入页面显示首次缓存问题</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=利用腾讯云cloudbase快速搭建vue项目到发布 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2022%2F01%2F28%2F%25E5%2588%25A9%25E7%2594%25A8%25E8%2585%25BE%25E8%25AE%25AF%25E4%25BA%2591cloudbase%25E5%25BF%25AB%25E9%2580%259F%25E6%2590%25AD%25E5%25BB%25BAvue%25E9%25A1%25B9%25E7%259B%25AE%25E5%2588%25B0%25E5%258F%2591%25E5%25B8%2583%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=利用腾讯云cloudbase快速搭建vue项目到发布 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2022%2F01%2F28%2F%25E5%2588%25A9%25E7%2594%25A8%25E8%2585%25BE%25E8%25AE%25AF%25E4%25BA%2591cloudbase%25E5%25BF%25AB%25E9%2580%259F%25E6%2590%25AD%25E5%25BB%25BAvue%25E9%25A1%25B9%25E7%259B%25AE%25E5%2588%25B0%25E5%258F%2591%25E5%25B8%2583%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=利用腾讯云cloudbase快速搭建vue项目到发布 - VANTERC个人博客&url=https://vanterc.github.io/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

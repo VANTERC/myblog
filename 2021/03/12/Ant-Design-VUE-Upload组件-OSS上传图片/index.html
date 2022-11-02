@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>Ant Design VUE Upload组件 OSS上传图片 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;p&gt;&lt;img src=&#34;https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png&#34; alt=&#34;image.png&#34;&gt;&lt;br&gt;之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&amp;#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "Ant Design VUE Upload组件 OSS上传图片 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;p&gt;&lt;img src=&#34;https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png&#34; alt=&#34;image.png&#34;&gt;&lt;br&gt;之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&amp;#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;p&gt;&lt;img src=&#34;https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png&#34; alt=&#34;image.png&#34;&gt;&lt;br&gt;之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&amp;#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。&lt;/p&gt;" />
+    <meta name="twitter:title" content="Ant Design VUE Upload组件 OSS上传图片 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;p&gt;&lt;img src=&#34;https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png&#34; alt=&#34;image.png&#34;&gt;&lt;br&gt;之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&amp;#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;p&gt;&lt;img src=&#34;https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png&#34; alt=&#34;image.png&#34;&gt;&lt;br&gt;之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&amp;#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "Ant Design VUE Upload组件 OSS上传图片 | VANTERC个人博客",
+            "datePublished": "2021-03-12T12:52:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6inzm0003qg8412x3dnhp" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Ant Design VUE Upload组件 OSS上传图片
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-03-12T12:52:00.000Z" itemprop="datePublished">2021-03-12</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/1585566760218-eb503e89-dfbc-4fc9-a81c-97bb01aac7be.png" alt="image.png"><br>之前写图片上传都是通过自定义方法将file和OSS信息组装到formData里面然后设置请求头’Content-Type’: ‘multipart&#x2F;form-data’来上传的，现在直接用自带的action上传还是挺方便的。</p>
+<span id="more"></span>
+<pre><code class="js">&lt;template&gt;
+    &lt;a-upload
+    :action=&quot;urlhost&quot;
+    listType=&quot;picture-card&quot;
+    accept=&quot;image/*&quot;
+    @preview=&quot;handlePreview&quot;
+    @change=&quot;handleChange&quot;
+    :remove=&quot;removeImg&quot;
+    :beforeUpload=&quot;beforeUpload&quot;
+    :data=&quot;paramsData&quot;&gt;
+    &lt;a-icon type=&quot;plus&quot; /&gt;
+      &lt;div class=&quot;ant-upload-text&quot;&gt;点击上传&lt;/div&gt;
+ &lt;/a-upload&gt;
+   &lt;a-modal :visible=&quot;previewVisible&quot; :footer=&quot;null&quot; @cancel=&quot;handleCancel&quot;&gt;
+      &lt;img alt=&quot;example&quot; style=&quot;width: 100%&quot; :src=&quot;previewImage&quot; /&gt;
+   &lt;/a-modal&gt;
+&lt;/template&gt;
+
+
+&lt;script&gt;
+  function getBase64(file) &#123;
+    return new Promise((resolve, reject) =&gt; &#123;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () =&gt; resolve(reader.result);
+      reader.onerror = error =&gt; reject(error);
+    &#125;);
+  &#125;
+  import &#123;getOssSignWeb&#125; from &#39;../../../api/upload.js&#39;; //获取后端OSS信息接口
+  export default &#123;
+      return &#123;
+        businessId:&#39;&#39;,//业务id
+        previewVisible:false,
+      previewImage: &#39;&#39;,
+        paramsData:&#123; //OSS信息对象 也是用来需要上传的参数
+          &#39;OSSAccessKeyId&#39;:&#39;&#39;,
+          &#39;policy&#39;:&#39;&#39;,
+          &#39;Signature&#39;:&#39;&#39;,
+          &#39;key&#39;:&#39;&#39;,
+          &#39;success_action_status&#39;:200
+        &#125;,
+        urlhost:&#39;&#39;, //上传路径
+      &#125;,
+    methods: &#123;
+        async handlePreview(file) &#123; //点击图片预览
+        if (!file.url &amp;&amp; !file.preview) &#123;
+          file.preview = await getBase64(file.originFileObj);
+        &#125;
+        this.previewImage = file.url || file.preview;
+        this.previewVisible = true;
+      &#125;,
+      beforeUpload(file, fileList)&#123; //在上传前获取OSS信息
+        return new Promise((resolve,reject)=&gt;&#123;
+          let params =&#123;
+            &quot;businessId&quot;:this.businessId,
+            &quot;suffix&quot;:&#39;.jpg&#39;
+          &#125;
+          getOssSignWeb(params).then(res=&gt;&#123;
+                this.urlhost = res.retData.host
+              this.paramsData = &#123; //组装参数
+                &#39;OSSAccessKeyId&#39;:res.retData.accessid,
+                &#39;policy&#39;:res.retData.policy,
+                &#39;Signature&#39;:res.retData.signature,
+                &#39;key&#39;:res.retData.dir+res.retData.fileName,
+                &#39;success_action_status&#39;:200
+              &#125;
+              resolve(file)
+            &#125;).catch(e=&gt;&#123;
+              reject()
+            &#125;)
+        &#125;)
+      &#125;,
+      removeImg()&#123;
+        return new Promise((resolve,reject)=&gt;&#123;
+          this.$confirm(&#123;
+            title: &#39;提示&#39;,
+            content: &#39;是否删除这张图片&#39;,
+            okText: &#39;确定&#39;,
+            okType: &#39;danger&#39;,
+            cancelText: &#39;取消&#39;,
+            onOk() &#123;
+              resolve(true)
+            &#125;,
+            onCancel() &#123;
+              resolve(false)
+            &#125;,
+          &#125;)
+        &#125;)
+      &#125;,
+      handleChange(info) &#123;
+        if (info.file.status === &#39;done&#39;) &#123;
+          this.$message.success(&#39;上传成功！&#39;);
+        &#125;
+        if (info.file.status === &#39;error&#39;) &#123;
+          this.$message.error(&#39;上传失败！&#39;);
+        &#125;
+      &#125;,
+      handleCancel() &#123;
+        this.previewVisible = false;
+      &#125;,
+    &#125;
+  &#125;
+&lt;/script&gt;
+</code></pre>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2021/04/06/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8%E5%8E%8B%E7%BC%A9gzip/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          vue项目启用压缩gzip
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">JS多个异步接口的顺序调用</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=Ant Design VUE Upload组件 OSS上传图片 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F03%2F12%2FAnt-Design-VUE-Upload%25E7%25BB%2584%25E4%25BB%25B6-OSS%25E4%25B8%258A%25E4%25BC%25A0%25E5%259B%25BE%25E7%2589%2587%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=Ant Design VUE Upload组件 OSS上传图片 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F03%2F12%2FAnt-Design-VUE-Upload%25E7%25BB%2584%25E4%25BB%25B6-OSS%25E4%25B8%258A%25E4%25BC%25A0%25E5%259B%25BE%25E7%2589%2587%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=Ant Design VUE Upload组件 OSS上传图片 - VANTERC个人博客&url=https://vanterc.github.io/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

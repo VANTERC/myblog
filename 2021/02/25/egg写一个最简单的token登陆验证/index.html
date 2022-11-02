@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>egg 写一个最简单的token登陆验证 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;h1 id=&#34;egg-写一个最简单的token登陆验证&#34;&gt;&lt;a href=&#34;#egg-写一个最简单的token登陆验证&#34; class=&#34;headerlink&#34; title=&#34;egg 写一个最简单的token登陆验证&#34;&gt;&lt;/a&gt;egg 写一个最简单的token登陆验证&lt;/h1&gt;&lt;p&gt;首先看完整的目录结构&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "egg 写一个最简单的token登陆验证 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;h1 id=&#34;egg-写一个最简单的token登陆验证&#34;&gt;&lt;a href=&#34;#egg-写一个最简单的token登陆验证&#34; class=&#34;headerlink&#34; title=&#34;egg 写一个最简单的token登陆验证&#34;&gt;&lt;/a&gt;egg 写一个最简单的token登陆验证&lt;/h1&gt;&lt;p&gt;首先看完整的目录结构&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2021/02/25/egg%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84token%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h1 id=&#34;egg-写一个最简单的token登陆验证&#34;&gt;&lt;a href=&#34;#egg-写一个最简单的token登陆验证&#34; class=&#34;headerlink&#34; title=&#34;egg 写一个最简单的token登陆验证&#34;&gt;&lt;/a&gt;egg 写一个最简单的token登陆验证&lt;/h1&gt;&lt;p&gt;首先看完整的目录结构&lt;/p&gt;" />
+    <meta name="twitter:title" content="egg 写一个最简单的token登陆验证 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;h1 id=&#34;egg-写一个最简单的token登陆验证&#34;&gt;&lt;a href=&#34;#egg-写一个最简单的token登陆验证&#34; class=&#34;headerlink&#34; title=&#34;egg 写一个最简单的token登陆验证&#34;&gt;&lt;/a&gt;egg 写一个最简单的token登陆验证&lt;/h1&gt;&lt;p&gt;首先看完整的目录结构&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h1 id=&#34;egg-写一个最简单的token登陆验证&#34;&gt;&lt;a href=&#34;#egg-写一个最简单的token登陆验证&#34; class=&#34;headerlink&#34; title=&#34;egg 写一个最简单的token登陆验证&#34;&gt;&lt;/a&gt;egg 写一个最简单的token登陆验证&lt;/h1&gt;&lt;p&gt;首先看完整的目录结构&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2021/02/25/egg%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84token%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "egg 写一个最简单的token登陆验证 | VANTERC个人博客",
+            "datePublished": "2021-02-25T10:32:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2021/02/25/egg%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84token%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6inzq0007qg84fhf14wl2" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      egg 写一个最简单的token登陆验证
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-02-25T10:32:00.000Z" itemprop="datePublished">2021-02-25</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="egg-写一个最简单的token登陆验证"><a href="#egg-写一个最简单的token登陆验证" class="headerlink" title="egg 写一个最简单的token登陆验证"></a>egg 写一个最简单的token登陆验证</h1><p>首先看完整的目录结构</p>
+<span id="more"></span>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg1.png" alt="image.png"><br>主要实现的功能是通过账号密码登录获取token，再通过token来获取用户信息，一共两个接口：登陆接口和获取用户信息接口。<br>上一篇文章已经写到了如何写一个最简单的获取mysql用户信息的接口，现在直接在上一篇文章的基础上做token验证登陆。</p>
+<p>mysql数据库准备好数据<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg2.png" alt="image.png"></p>
+<p>1、安装jwt依赖和解决跨域、白名单egg-cors</p>
+<pre><code class="bash">npm i egg-jwt --save
+npm i egg-cors --save
+</code></pre>
+<p>2、config&#x2F;config.default.js</p>
+<pre><code class="javascript">
+module.exports = &#123;
+  // 配置需要的中间件，数组顺序即为中间件的加载顺序
+  // middleware: [ &#39;jwt&#39; ],
+
+  keys: &#39;123456790&#39;,
+  mysql: &#123;
+    // 单数据库信息配置
+    client: &#123;
+      // host
+      host: &#39;38.130.21.169&#39;,
+      // 端口号
+      port: &#39;3306&#39;,
+      // 用户名
+      user: &#39;root&#39;,
+      // 密码
+      password: &#39;yourpassword&#39;,
+      // 数据库名
+      database: &#39;database&#39;,
+    &#125;,
+    // 是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
+  &#125;,
+  jwt: &#123;
+    secret: &quot;123456&quot;
+  &#125;,
+  security: &#123;
+    csrf: &#123;
+      enable: false,
+      ignoreJSON: true
+    &#125;,
+    domainWhiteList: [&#39;http://localhost:7001&#39;],//允许访问接口的白名单
+  &#125;,
+  cors: &#123;
+    origin:&#39;*&#39;, // 解决跨域问题
+    allowMethods: &#39;GET,HEAD,PUT,POST,DELETE,PATCH&#39;
+  &#125;,
+  cluster: &#123;
+    listen: &#123;
+      port: 7001, // 监听端口
+      // hostname: &#39;127.0.0.1&#39;, // 不建议设置 hostname 为 &#39;0.0.0.0&#39;，它将允许来自外部网络和来源的连接，请在知晓风险的情况下使用
+      // path: &#39;/var/run/egg.sock&#39;,
+    &#125;
+  &#125;
+&#125;;
+</code></pre>
+<p>3、config&#x2F;plugin.js</p>
+<pre><code class="javascript">module.exports = &#123;
+  mysql: &#123;
+    enable: true,
+    package: &#39;egg-mysql&#39;,
+  &#125;,
+  jwt: &#123;
+    enable: true,
+    package: &#39;egg-jwt&#39;,
+  &#125;,
+  cors: &#123;
+    enable: true,
+    package: &#39;egg-cors&#39;,
+  &#125;,
+&#125;;
+</code></pre>
+<p>4、app&#x2F;router.js 定义登陆路由</p>
+<pre><code class="javascript">module.exports = app =&gt; &#123;
+  const &#123; router, controller, middleware&#125; = app;
+  const jwtErr = middleware.jwtErr(app.config.jwt)
+  
+  router.get(&#39;/api/getUser&#39;, jwtErr, controller.user.getUser);
+  router.post(&#39;/api/login&#39;, controller.login.login);
+&#125;;
+</code></pre>
+<p>在获取用户信息接口上使用中间件</p>
+<p>5、middleware&#x2F;jwtErr.js 定义一个jwt中间件 访问路由的时候会通过这个中间件来处理</p>
+<pre><code class="javascript">module.exports = (options, app) =&gt; &#123;
+  return async function jwtErr(ctx, next) &#123;
+    const token = ctx.request.header.token;
+    if(token)&#123;
+      try &#123;
+        ctx.app.jwt.verify(token, options.secret); // 验证token 
+        await next();
+      &#125; catch (error) &#123;
+        ctx.status = 401;
+          ctx.body = &#123;
+              massage: &#39;token已过期，请重新登录&#39;,
+              code: -1,
+          &#125;
+          return;
+      &#125;
+    &#125; else &#123;
+      ctx.status = 401;
+      ctx.body = &#123;
+        message: &#39;token不存在&#39;,
+      &#125;;
+      return;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>接口先去header判断是否存在token，存在就验证，不存在就返回信息。</p>
+<p>6、controller&#x2F;login.js 登陆控制器 </p>
+<pre><code class="javascript">const Controller = require(&#39;egg&#39;).Controller;
+
+class LoginController extends Controller &#123;
+  async login() &#123;
+    const &#123; ctx, app &#125; = this;
+    const &#123; userName, password &#125; = ctx.request.body;
+    const &#123; result &#125; = await ctx.service.login.login(userName, password);
+
+    if(result.length&gt;0)&#123;
+      
+      const token = app.jwt.sign(&#123;
+        &#39;userName&#39;: userName, //需要存储的 token 数据
+      &#125;, app.config.jwt.secret, &#123; expiresIn: &#39;2m&#39; &#125;); // 2分钟token过期
+      
+      ctx.set(&#123;&#39;token&#39;:token&#125;)//设置headers
+      ctx.body = &#123;
+        code: &#39;200&#39;,
+        data: [&#123;
+          token: token,
+          userName: result[0].userName,
+          userId: result[0].userId
+        &#125;],
+        message: &#39;success&#39;
+      &#125;;
+
+    &#125;else&#123;
+
+      ctx.body = &#123;
+        code: &#39;401&#39;,
+        data: result,
+        message: &#39;账号或密码错误&#39;
+      &#125;;
+
+    &#125;
+  &#125;
+&#125;
+
+module.exports = LoginController;
+</code></pre>
+<p>将用户名信息存储在token数据中，并且设置2分钟token过期。当token和用户名密码验证成功，返回token和用户信息。</p>
+<p>7、service&#x2F;login.js </p>
+<pre><code class="javascript">const Service = require(&#39;egg&#39;).Service;
+const crypto = require(&#39;crypto&#39;);
+
+class LoginService extends Service &#123;
+  getMd5Data(data) &#123;
+    return crypto.createHash(&#39;md5&#39;).update(data).digest(&#39;hex&#39;);
+  &#125;
+
+  async login(username,password) &#123;
+    const psd = this.getMd5Data(password)
+    const data = await this.app.mysql.query(`SELECT * FROM user WHERE userName=&#39;$&#123;username&#125;&#39; and password=&#39;$&#123;psd&#125;&#39;`);
+    const result = JSON.parse( JSON.stringify(data)); // 去除node中mysql查询数据产生的RowDataPacket
+    return &#123; result &#125;;
+  &#125;
+&#125;
+
+module.exports = LoginService;
+</code></pre>
+<p>md5加密后查询匹配数据库密码。</p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>postman调用 post请求 填写用户名和密码获取token<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg3.png" alt="image.png"><br>通过拿到的token放入header请求用户信息<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg4.png" alt="image.png"><br>token不存在的情况<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg5.png" alt="image.png"></p>
+<p>token过期的情况<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg6.png" alt="image.png"></p>
+<p>账号密码错误的情况<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/egg7.png" alt="image.png"></p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          JS多个异步接口的顺序调用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/25/vscode-eslint-%E8%A7%84%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">vscode eslint 规则</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=egg 写一个最简单的token登陆验证 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F02%2F25%2Fegg%25E5%2586%2599%25E4%25B8%2580%25E4%25B8%25AA%25E6%259C%2580%25E7%25AE%2580%25E5%258D%2595%25E7%259A%2584token%25E7%2599%25BB%25E9%2599%2586%25E9%25AA%258C%25E8%25AF%2581%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=egg 写一个最简单的token登陆验证 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F02%2F25%2Fegg%25E5%2586%2599%25E4%25B8%2580%25E4%25B8%25AA%25E6%259C%2580%25E7%25AE%2580%25E5%258D%2595%25E7%259A%2584token%25E7%2599%25BB%25E9%2599%2586%25E9%25AA%258C%25E8%25AF%2581%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=egg 写一个最简单的token登陆验证 - VANTERC个人博客&url=https://vanterc.github.io/2021/02/25/egg%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84token%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

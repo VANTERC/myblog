@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>JS多个异步接口的顺序调用 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;h3 id=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;a href=&#34;#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34; class=&#34;headerlink&#34; title=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;/a&gt;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&lt;/h3&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "JS多个异步接口的顺序调用 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;h3 id=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;a href=&#34;#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34; class=&#34;headerlink&#34; title=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;/a&gt;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&lt;/h3&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h3 id=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;a href=&#34;#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34; class=&#34;headerlink&#34; title=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;/a&gt;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&lt;/h3&gt;" />
+    <meta name="twitter:title" content="JS多个异步接口的顺序调用 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;h3 id=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;a href=&#34;#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34; class=&#34;headerlink&#34; title=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;/a&gt;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&lt;/h3&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h3 id=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;a href=&#34;#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34; class=&#34;headerlink&#34; title=&#34;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&#34;&gt;&lt;/a&gt;假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？&lt;/h3&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "JS多个异步接口的顺序调用 | VANTERC个人博客",
+            "datePublished": "2021-02-26T09:53:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6inzo0005qg84ap673ws8" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      JS多个异步接口的顺序调用
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-02-26T09:53:00.000Z" itemprop="datePublished">2021-02-26</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h3 id="假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？"><a href="#假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？" class="headerlink" title="假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？"></a>假如有这样的一个需求：有请求1、请求2、请求3，但是请求1的入参必须依赖请求2和请求3的返回才可以获取到数据，那么需要怎么做呢？</h3><span id="more"></span>
+<p>常规的做法可能是以下这样：</p>
+<pre><code class="javascript">fetch2().then(result2=&gt;&#123;
+    fetch3().then(result3=&gt;&#123;
+        fetch1(result2,result3).then(result1=&gt;&#123;
+            console.log(result1);
+        &#125;)
+    &#125;)
+&#125;)
+</code></pre>
+<p>这样的写法虽然可以实现需求，但是写起来特别难受，层层嵌套。<br>ES6中新增了async await特性，完全可以满足这样的需求，下面换一种写法看看。</p>
+<pre><code class="javascript">async function getResult()&#123;
+    let result2 = await fetch2()
+    let result3 = await fetch3()
+    let result1 = await fetch1(result2,result3)
+    console.log(result1);
+&#125;)
+</code></pre>
+<p><code>async</code>函数返回一个 Promise 对象，可以使用<code>then</code>方法添加回调函数。当函数执行的时候，一旦遇到<code>await</code>就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。</p>
+<pre><code class="javascript">async function getResult()&#123;
+    let result2 = await fetch2()
+    let result3 = await fetch3()
+    return await fetch1(result2,result3)
+&#125;)
+getResult().then(res=&gt;&#123;
+    console.log(res);
+&#125;)
+</code></pre>
+<p>在方法前加上async 说明在这个方法体内存在异步调用，而await后面通常也是一个Promise对象，会返回Promise对象处理的结果，如果不是 Promise 对象，就直接返回对应的值，await不能单独使用，必须在async方法内部使用。</p>
+<pre><code class="javascript">async function f() &#123;
+  return await 123;
+&#125;
+f().then(v =&gt; console.log(v))
+// 123
+</code></pre>
+<p>但是这样的处理就会出现一个缺点，假如fetch2和fetch3请求非常慢，那么fetch1等待的时间就非常久，这样的处理结果非常影响页面的效率。<br>我们可以使用Promise.all()来处理：</p>
+<pre><code class="javascript">async function getResult()&#123;
+    let [result2,result3] = await Promise.all([fetch2(),fetch3()])
+    return await fetch1(result2,result3)
+&#125;)
+getResult().then(result1=&gt;&#123;
+    console.log(result1);
+&#125;)
+</code></pre>
+<p>使用Promise.all()需要传递一个Promise实例的数组，即多个请求的数组，并且多个请求是同时进行请求的。这样就fetch1就无需等待过多的请求时间了。<br>Promise.all返回的结果是一个数组，并且 Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的。<br>那么如何处理异常呢？</p>
+<pre><code class="javascript">async function getResult()&#123;
+    let [result2,result3] = await Promise.all([fetch2(),fetch3()]).catch(e=&gt;&#123;
+        throw new Error(e);
+    &#125;)
+    return await fetch1(result2,result3)
+&#125;)
+getResult().then(result1=&gt;&#123;
+    console.log(result1);
+&#125;).catch(e=&gt;&#123;
+    throw new Error(e);
+&#125;)
+</code></pre>
+<p>promise.all 中任何一个promise 出现错误的时候都会执行reject，同时将错误异常返回给async的Promise 对象并且抛出reject，抛出的错误对象reject又会被<code>catch</code>方法回调函数接收到。<br>只有<code>async</code>函数内部的异步操作执行完，才会执行<code>then</code>方法指定的回调函数。<br><code>而await</code>后面的 Promise 对象如果变为<code>reject</code>状态，则<code>reject</code>的参数会被<code>catch</code>方法的回调函数接收到。<br>所以如果promise.all 中任何一个promise 出现错误我们可以用catch来接收promise.all的错误，也可以不用catch来接收，因为Promise.all抛出的异常会被async的reject抛出，然后通过async的catch方法来处理。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2021/03/12/Ant-Design-VUE-Upload%E7%BB%84%E4%BB%B6-OSS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          Ant Design VUE Upload组件 OSS上传图片
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/25/egg%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84token%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">egg 写一个最简单的token登陆验证</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=JS多个异步接口的顺序调用 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F02%2F26%2FJS%25E5%25A4%259A%25E4%25B8%25AA%25E5%25BC%2582%25E6%25AD%25A5%25E6%258E%25A5%25E5%258F%25A3%25E7%259A%2584%25E9%25A1%25BA%25E5%25BA%258F%25E8%25B0%2583%25E7%2594%25A8%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=JS多个异步接口的顺序调用 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F02%2F26%2FJS%25E5%25A4%259A%25E4%25B8%25AA%25E5%25BC%2582%25E6%25AD%25A5%25E6%258E%25A5%25E5%258F%25A3%25E7%259A%2584%25E9%25A1%25BA%25E5%25BA%258F%25E8%25B0%2583%25E7%2594%25A8%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=JS多个异步接口的顺序调用 - VANTERC个人博客&url=https://vanterc.github.io/2021/02/26/JS%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%B0%83%E7%94%A8/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>解决vue keepAlive 二次进入页面显示首次缓存问题 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;p&gt;问题场景：&lt;br&gt;当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "解决vue keepAlive 二次进入页面显示首次缓存问题 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;p&gt;问题场景：&lt;br&gt;当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;p&gt;问题场景：&lt;br&gt;当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。&lt;/p&gt;" />
+    <meta name="twitter:title" content="解决vue keepAlive 二次进入页面显示首次缓存问题 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;p&gt;问题场景：&lt;br&gt;当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;p&gt;问题场景：&lt;br&gt;当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "解决vue keepAlive 二次进入页面显示首次缓存问题 | VANTERC个人博客",
+            "datePublished": "2021-07-26T06:04:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6io03000iqg84hdn85cvf" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      解决vue keepAlive 二次进入页面显示首次缓存问题
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-07-26T06:04:00.000Z" itemprop="datePublished">2021-07-26</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>问题场景：<br>当某个带有筛选条件查询列表的页面需要进行缓存，以便不再需要重复进行选择或者输入筛选条件的时候，我们就可以利用keepAlive来进行缓存，但keepAlive也存在着一些坑，这是需要注意的地方。</p>
+<span id="more"></span>
+<h3 id="如何利用keepAlive进行缓存"><a href="#如何利用keepAlive进行缓存" class="headerlink" title="如何利用keepAlive进行缓存"></a>如何利用keepAlive进行缓存</h3><p>1、在路由meta内定义keepAlive，来设置需要被缓存的页面</p>
+<pre><code class="js">meta: &#123; keepAlive: true &#125;
+</code></pre>
+<p>ture: 需要缓存的路由；false:不需要缓存的路由</p>
+<p>2、判断router-view</p>
+<pre><code class="js">&lt;keep-alive&gt;
+  &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;/&gt;
+&lt;/keep-alive&gt;
+&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+</code></pre>
+<p>被keep-alive包裹的为需要缓存的页面，这样我们就可以通过keepAlive来切换哪些页面需要缓存，哪些不需要缓存。</p>
+<p>3、进入详情页面缓存，否则不缓存</p>
+<pre><code class="js">beforeRouteLeave (to, from, next) &#123;
+    if (to.path === &#39;/index/page1/detail&#39;) &#123;
+      from.meta.keepAlive = true
+      next()
+    &#125; else &#123;
+      from.meta.keepAlive = false
+      next()
+    &#125;
+  &#125;
+</code></pre>
+<p>路由守卫钩子 beforeRouteLeave 离开页面路由的时候出发；<br>当离开缓存页面，进入详情页面的时候，我们将缓存页面keepAlive设置true，如果离开缓存页面，不是进入详情页面的时候，我们设置为false，不进行缓存。</p>
+<p>这是最基本的缓存设置，但是keepAlive也留下了一个大坑。</p>
+<h2 id="keepAlive二次进入页面显示首次缓存问题"><a href="#keepAlive二次进入页面显示首次缓存问题" class="headerlink" title="keepAlive二次进入页面显示首次缓存问题"></a>keepAlive二次进入页面显示首次缓存问题</h2><p>第一次从缓存页面进入详情页再返回到缓存页面的时候，页面条件能被正确的缓存下来，但是当我们切换到别的路由，再一次进入该缓存页修改查询条件，并进入详情后返回缓存页，此时缓存的是页面状态是第一次进入该页面的时候的状态，也就是说，第二次进入页面的时候，该缓存读取的是第一次的缓存，这就非常的坑了。<br>所以通过下面的刷新缓存路由的方式来解决这个问题。</p>
+<p>1、调整 router-view</p>
+<pre><code class="js">// view
+&lt;keep-alive v-if=&quot;isRouterAlive&quot;&gt;
+  &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;/&gt;
+&lt;/keep-alive&gt;
+&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+
+// js
+data () &#123;
+  return &#123;
+    isRouterAlive: true
+  &#125;
+&#125;,
+provide () &#123; return &#123; reload: this.reload &#125; &#125;,
+
+methods: &#123;
+  reload () &#123;
+    this.isRouterAlive = false
+    this.$nextTick(() =&gt; (this.isRouterAlive = true))
+  &#125;
+&#125;
+</code></pre>
+<p>定义一个isRouterAlive变量，用来刷新keep-alive;通过provide向下面子孙组件们暴露一个reload方法，用来刷新缓存。</p>
+<p>2、设置缓存</p>
+<pre><code class="js">export default &#123;
+ inject: [&#39;reload&#39;],
+ data () &#123;
+   return &#123;
+    ....
+   &#125;,
+ &#125;,
+ beforeRouteEnter (to, from, next) &#123;
+    to.meta.keepAlive = true
+    if (from.path !== &#39;/index/page1/detail&#39;) &#123;
+      next(vm =&gt; &#123;
+        vm.reload()
+      &#125;)
+    &#125; else &#123;
+      next()
+    &#125;
+  &#125;,
+  beforeRouteLeave (to, from, next) &#123;
+    if (to.path === &#39;/index/page1/detail&#39;) &#123;
+      from.meta.keepAlive = true
+      next()
+    &#125; else &#123;
+      from.meta.keepAlive = false
+      next()
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>子组件注册inject: [‘reload’] 方法，beforeRouteEnter钩子在进入缓存页面的时候通过通过判断路由是否是来自详情页面，如果不是详情页，我们就刷新缓存，如果是详情页，就不做处理。<br>这样就解决了，只要是路由进入过别的页面(非详情页面)，我们就刷新缓存，这样就不会出现二次进入的时候，显示的是第一次的缓存状态，同时从详情页返回后正常显示缓存数据。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          利用腾讯云cloudbase快速搭建vue项目到发布
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/05/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">理解vue3组合式API  Setup（二）</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=解决vue keepAlive 二次进入页面显示首次缓存问题 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F07%2F26%2F%25E8%25A7%25A3%25E5%2586%25B3vue-keepAlive-%25E4%25BA%258C%25E6%25AC%25A1%25E8%25BF%259B%25E5%2585%25A5%25E9%25A1%25B5%25E9%259D%25A2%25E6%2598%25BE%25E7%25A4%25BA%25E9%25A6%2596%25E6%25AC%25A1%25E7%25BC%2593%25E5%25AD%2598%25E9%2597%25AE%25E9%25A2%2598%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=解决vue keepAlive 二次进入页面显示首次缓存问题 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F07%2F26%2F%25E8%25A7%25A3%25E5%2586%25B3vue-keepAlive-%25E4%25BA%258C%25E6%25AC%25A1%25E8%25BF%259B%25E5%2585%25A5%25E9%25A1%25B5%25E9%259D%25A2%25E6%2598%25BE%25E7%25A4%25BA%25E9%25A6%2596%25E6%25AC%25A1%25E7%25BC%2593%25E5%25AD%2598%25E9%2597%25AE%25E9%25A2%2598%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=解决vue keepAlive 二次进入页面显示首次缓存问题 - VANTERC个人博客&url=https://vanterc.github.io/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

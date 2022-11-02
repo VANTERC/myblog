@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>微信小程序云开发 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;h2 id=&#34;微信小程序云开发&#34;&gt;&lt;a href=&#34;#微信小程序云开发&#34; class=&#34;headerlink&#34; title=&#34;微信小程序云开发&#34;&gt;&lt;/a&gt;微信小程序云开发&lt;/h2&gt;&lt;h3 id=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;a href=&#34;#如何利用最快的方式进行小程序的开发？&#34; class=&#34;headerlink&#34; title=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;/a&gt;如何利用最快的方式进行小程序的开发？&lt;/h3&gt;&lt;p&gt;传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "微信小程序云开发 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;h2 id=&#34;微信小程序云开发&#34;&gt;&lt;a href=&#34;#微信小程序云开发&#34; class=&#34;headerlink&#34; title=&#34;微信小程序云开发&#34;&gt;&lt;/a&gt;微信小程序云开发&lt;/h2&gt;&lt;h3 id=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;a href=&#34;#如何利用最快的方式进行小程序的开发？&#34; class=&#34;headerlink&#34; title=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;/a&gt;如何利用最快的方式进行小程序的开发？&lt;/h3&gt;&lt;p&gt;传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h2 id=&#34;微信小程序云开发&#34;&gt;&lt;a href=&#34;#微信小程序云开发&#34; class=&#34;headerlink&#34; title=&#34;微信小程序云开发&#34;&gt;&lt;/a&gt;微信小程序云开发&lt;/h2&gt;&lt;h3 id=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;a href=&#34;#如何利用最快的方式进行小程序的开发？&#34; class=&#34;headerlink&#34; title=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;/a&gt;如何利用最快的方式进行小程序的开发？&lt;/h3&gt;&lt;p&gt;传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。&lt;/p&gt;" />
+    <meta name="twitter:title" content="微信小程序云开发 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;微信小程序云开发&#34;&gt;&lt;a href=&#34;#微信小程序云开发&#34; class=&#34;headerlink&#34; title=&#34;微信小程序云开发&#34;&gt;&lt;/a&gt;微信小程序云开发&lt;/h2&gt;&lt;h3 id=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;a href=&#34;#如何利用最快的方式进行小程序的开发？&#34; class=&#34;headerlink&#34; title=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;/a&gt;如何利用最快的方式进行小程序的开发？&lt;/h3&gt;&lt;p&gt;传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h2 id=&#34;微信小程序云开发&#34;&gt;&lt;a href=&#34;#微信小程序云开发&#34; class=&#34;headerlink&#34; title=&#34;微信小程序云开发&#34;&gt;&lt;/a&gt;微信小程序云开发&lt;/h2&gt;&lt;h3 id=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;a href=&#34;#如何利用最快的方式进行小程序的开发？&#34; class=&#34;headerlink&#34; title=&#34;如何利用最快的方式进行小程序的开发？&#34;&gt;&lt;/a&gt;如何利用最快的方式进行小程序的开发？&lt;/h3&gt;&lt;p&gt;传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "微信小程序云开发 | VANTERC个人博客",
+            "datePublished": "2022-09-14T09:57:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9z6io00000fqg84h2h476dv" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序云开发
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-09-14T09:57:00.000Z" itemprop="datePublished">2022-09-14</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="微信小程序云开发"><a href="#微信小程序云开发" class="headerlink" title="微信小程序云开发"></a>微信小程序云开发</h2><h3 id="如何利用最快的方式进行小程序的开发？"><a href="#如何利用最快的方式进行小程序的开发？" class="headerlink" title="如何利用最快的方式进行小程序的开发？"></a>如何利用最快的方式进行小程序的开发？</h3><p>传统的购买服务器搭建后端服务的开发方式已经越来越繁重，因为各种的环境配置，服务部署，服务器价格等压力已经让开发软件成本变的越来越高昂。只有让开发变得简单，让开发变的快捷，特别像小程序这类轻应用，如何能在短短几周的时间内从开发到发布上线，变的尤为重要，提高效率，降低成本才是关键。</p>
+<span id="more"></span>
+<h3 id="小程序云开发流程"><a href="#小程序云开发流程" class="headerlink" title="小程序云开发流程"></a>小程序云开发流程</h3><p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220914-155301%402x.png" alt="image.png"></p>
+<p>选择云开发 并且创建自己的环境<br>前期有一定的免费额度，后面需要收费，价格自行了解<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220914-160458%402x.png" alt="image.png"></p>
+<p>熟悉下界面<br>云开发提供给我们数据库、云函数(可以理解为后端接口函数)<br>利用云函数来开发我们的后端接口<br>云函数的底层实现是Node<br>所有有Node基础的小伙伴相对来说能够很快上手<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220914-160747%402x.png" alt="image.png"></p>
+<p>熟悉下目录结构<br>cloudfunctions目录为云函数目录，可以理解为服务端接口目录<br>miniprogram目录是小程序前端目录，可以理解为客户端页面<br>所以这个云开发的项目是前后端分离的项目<br>开发前当前环境一定要选择自己创建的云环境，我这里是test<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220914-161150%402x.png" alt="image.png"></p>
+<p>新建一个getUser的云函数，这里会看到工具会自动给我们创建config.json、index.js、package.json三个文件对应云函数的配置、入口、依赖<br>我们主要在index.js下编写我们的业务逻辑，也可以说是接口逻辑代码。<br>云函数入口文件的依赖也是依赖于微信的sdk，然后初始化sdk。<br>接下来就是main函数，它是异步的，并且有两个参数，event用来接受客户端入参，context是当前函数的调用信息。<br>通俗的讲main就是接口的入口函数，event通过客户端拿到传递的参数，retrun返回给客户端，就是这么一个很简单的过程。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-111628%402x.png" alt="image.png"></p>
+<p>将main下内容改成一个参数计算加法的结果返回给客户端。</p>
+<pre><code class="js">// 云函数入口函数
+exports.main = async (event, context) =&gt; &#123;
+  return &#123;
+    code: 100,
+    data: event.a+event.b,
+    msg:&#39;success&#39;
+  &#125;
+&#125;
+</code></pre>
+<p>保存后右击getUser选择上传并部署<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-113642%402x.png" alt="image.png"></p>
+<p>这时候打开云开发→云函数下就可以看到刚刚上传的云函数getUser<br>这样一个简单的getUser的接口就写好了，下面去前端调用下。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-113858%402x.png" alt="image.png"></p>
+<p>在小程序前端目录miniprogram下index目录下index.js下写一个onLoad函数，并且通过wx.cloud.callFunction函数来调用getUser云函数。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-114458%402x.png" alt="image.png"></p>
+<p>name为刚刚建的云函数名称，传入a和b参数，重新点击编译按钮，这时候查看network调用情况，可以看到一个云函数接口的调用信息，并且返回了a+b的结果，这就是一个简单的云函数接口调用。</p>
+<pre><code class="js">wx.cloud.callFunction(&#123;
+  name:&#39;getUser&#39;,
+  data:&#123;
+    a:1,
+    b:2
+  &#125;
+&#125;).then(res=&gt;&#123;
+  console.log(res)
+&#125;)
+</code></pre>
+<h3 id="如何获取数据库数据？"><a href="#如何获取数据库数据？" class="headerlink" title="如何获取数据库数据？"></a>如何获取数据库数据？</h3><p>首先在数据库内新建一个集合对应数据库表<br>添加一条记录，id系统自动生成<br>注意这里需要配置好可读写的数据权限，不然可能拿不到数据<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-142413%402x.png" alt="image.png"></p>
+<p>初始化数据库，并且通过collection来获取表数据<br>并且点击云函数上传并部署，完成后再次调用</p>
+<pre><code class="js">// 云函数入口文件
+const cloud = require(&#39;wx-server-sdk&#39;)
+
+cloud.init()
+const db = cloud.database()
+// 云函数入口函数
+exports.main = async (event, context) =&gt; &#123;
+  const data = await db.collection(&#39;test&#39;).get()
+  return &#123;
+    code: 100,
+    data: data,
+    msg:&#39;success&#39;
+  &#125;
+&#125;
+
+// 前端调用
+wx.cloud.callFunction(&#123;
+  name:&#39;getUser&#39;,
+  data:&#123;&#125;
+&#125;).then(res=&gt;&#123;
+  console.log(res)
+&#125;)
+</code></pre>
+<p>可以看到云函数成功返回了数据库test表内的数据。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-144153%402x.png" alt="image.png"></p>
+<h3 id="直接从前端获取数据库数据"><a href="#直接从前端获取数据库数据" class="headerlink" title="直接从前端获取数据库数据"></a>直接从前端获取数据库数据</h3><p>如何直接从前端获取数据库数据，而不许要通过云函数呢，微信sdk也提供了一种简单的方法</p>
+<p><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/WX20220915-144900%402x.png" alt="image.png"></p>
+<p>注意如果使用这种方式获取数据库数据，一定要将数据库的权限配置成所有用户可读写，否则获取不到数据。</p>
+<pre><code class="js">const db = wx.cloud.database()
+db.collection(&#39;test&#39;).get().then(res=&gt;&#123;
+  console.log(res)
+&#125;)
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>微信小程序云函数开发，提供了最快最高效的方式进行了用户与数据的交互，极大的提供了开发的效率，缩短了周期，可以为很多轻量小应用提供最快的上线模式，而不需要像传统开发模式一样，购买服务器部署服务配置环境等等，大大降低了成本。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          2分钟教你如何免费搭建属于自己的网站或博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">利用腾讯云cloudbase快速搭建vue项目到发布</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=微信小程序云开发 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2022%2F09%2F14%2F%25E5%25BE%25AE%25E4%25BF%25A1%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E4%25BA%2591%25E5%25BC%2580%25E5%258F%2591%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=微信小程序云开发 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2022%2F09%2F14%2F%25E5%25BE%25AE%25E4%25BF%25A1%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E4%25BA%2591%25E5%25BC%2580%25E5%258F%2591%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=微信小程序云开发 - VANTERC个人博客&url=https://vanterc.github.io/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/26/%E8%A7%A3%E5%86%B3vue-keepAlive-%E4%BA%8C%E6%AC%A1%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%A6%96%E6%AC%A1%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">解决vue keepAlive 二次进入页面显示首次缓存问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
