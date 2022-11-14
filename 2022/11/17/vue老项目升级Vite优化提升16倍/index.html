@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>vue2老项目升级Vite优化提升16倍 | VANTERC个人博客</title>
+
+    <meta name="description" content="&lt;h2 id=&#34;老的vue2项目如何升级到Vite&#34;&gt;&lt;a href=&#34;#老的vue2项目如何升级到Vite&#34; class=&#34;headerlink&#34; title=&#34;老的vue2项目如何升级到Vite?&#34;&gt;&lt;/a&gt;老的vue2项目如何升级到Vite?&lt;/h2&gt;&lt;p&gt;很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。&lt;br&gt;而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。&lt;br&gt;但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。&lt;/p&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "vue2老项目升级Vite优化提升16倍 | VANTERC个人博客"  />
+    <meta property="og:description" content= "&lt;h2 id=&#34;老的vue2项目如何升级到Vite&#34;&gt;&lt;a href=&#34;#老的vue2项目如何升级到Vite&#34; class=&#34;headerlink&#34; title=&#34;老的vue2项目如何升级到Vite?&#34;&gt;&lt;/a&gt;老的vue2项目如何升级到Vite?&lt;/h2&gt;&lt;p&gt;很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。&lt;br&gt;而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。&lt;br&gt;但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。&lt;/p&gt;" />
+    <meta property="og:url" content="https://vanterc.github.io/2022/11/17/vue%E8%80%81%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7Vite%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%8716%E5%80%8D/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="VANTERC" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h2 id=&#34;老的vue2项目如何升级到Vite&#34;&gt;&lt;a href=&#34;#老的vue2项目如何升级到Vite&#34; class=&#34;headerlink&#34; title=&#34;老的vue2项目如何升级到Vite?&#34;&gt;&lt;/a&gt;老的vue2项目如何升级到Vite?&lt;/h2&gt;&lt;p&gt;很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。&lt;br&gt;而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。&lt;br&gt;但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。&lt;/p&gt;" />
+    <meta name="twitter:title" content="vue2老项目升级Vite优化提升16倍 | VANTERC个人博客"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;老的vue2项目如何升级到Vite&#34;&gt;&lt;a href=&#34;#老的vue2项目如何升级到Vite&#34; class=&#34;headerlink&#34; title=&#34;老的vue2项目如何升级到Vite?&#34;&gt;&lt;/a&gt;老的vue2项目如何升级到Vite?&lt;/h2&gt;&lt;p&gt;很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。&lt;br&gt;而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。&lt;br&gt;但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h2 id=&#34;老的vue2项目如何升级到Vite&#34;&gt;&lt;a href=&#34;#老的vue2项目如何升级到Vite&#34; class=&#34;headerlink&#34; title=&#34;老的vue2项目如何升级到Vite?&#34;&gt;&lt;/a&gt;老的vue2项目如何升级到Vite?&lt;/h2&gt;&lt;p&gt;很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。&lt;br&gt;而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。&lt;br&gt;但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "VANTERC" },
+            "@type": "BlogPosting",
+            "url": "https://vanterc.github.io/2022/11/17/vue%E8%80%81%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7Vite%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%8716%E5%80%8D/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+            },
+            "name": "VANTERC"
+            },
+            "headline": "vue2老项目升级Vite优化提升16倍 | VANTERC个人博客",
+            "datePublished": "2022-11-17T09:57:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://vanterc.github.io/2022/11/17/vue%E8%80%81%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7Vite%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%8716%E5%80%8D/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "www-vanterc-com",
+              siteName: "www.vanterc.com",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
+              nesting: "4",
+              nocomment: "这里冷冷清清的，一条评论都没有",
+              admin: "VANTERC",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="https://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG" alt="VANTERC">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>VANTERC个人博客</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">文章</a>
+                
+                <a href="/photography">相册</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/VANTERC">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">文章</a>
+                    
+                    <a href="/photography">相册</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-clagmayfm000b6c845ct5br8i" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      vue2老项目升级Vite优化提升16倍
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-11-17T09:57:00.000Z" itemprop="datePublished">2022-11-17</time>
+</div>
+
+            
+
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="老的vue2项目如何升级到Vite"><a href="#老的vue2项目如何升级到Vite" class="headerlink" title="老的vue2项目如何升级到Vite?"></a>老的vue2项目如何升级到Vite?</h2><p>很多vue2老项目可能是vue-cli脚手架，甚至有的还是webpack构建的。现在都2022年了，对于刚入行前端的同学来说来花时间去学一遍webpack，费时又费力，苦涩又难懂，一堆的配置项，看的头皮发麻。<br>而对于上一代vue-cli脚手架，相比webpack易上手很多，vue-ui的可视化界面搭建配置项目也非常友好。<br>但是，尤大极力推荐Vite才是未来，可以说Vite打遍天下无敌手，是现在最快最好的构建工具。</p>
+<span id="more"></span>
+<p>废话不多说了，上图！</p>
+<p>老vue2 vue-cli脚手架项目资源下载情况：<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WeChat3915120712479346fd5eed8f2e4c69f6.png" alt="image.png"></p>
+<p>升级vite后项目资源下载情况：<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WeChatb437da539274f4656abb05d5026522d5.png" alt="image.png"></p>
+<p>vite构建后面资源体积小了3倍，这里主要也有配置了gzip的功劳。</p>
+<p>再来看构建速度对比：<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WeChat04b370310ff4e0130afe2ffe663294b8.png" alt="image.png"></p>
+<p>Id753构建为老项目构建速度ID754为升级为Vite后的构建速度，构建速度减少了一半！</p>
+<p>在来看项目启动速度<br>老vue2 vue-cli脚手架项目启动速度：16980ms<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WechatIMG6821.png" alt="image.png"></p>
+<p>升级vite后项目启动速度：621ms<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WechatIMG6822.png" alt="image.png"></p>
+<p>快了将近16秒，足足提升了16倍时间！大大节省了我们的开发时间。</p>
+<p>那么vue2老项目如何升级Vite呢？<br>大家可能都知道，Vite对vue3的支持比较好，我们利用Vite去创建项目的时候默认都是vue@3+以上的版本，就像这样：</p>
+<pre><code class="json">&quot;dependencies&quot;: &#123;
+  &quot;vue&quot;: &quot;^3.2.41&quot;
+&#125;,
+&quot;devDependencies&quot;: &#123;
+  &quot;@vitejs/plugin-vue&quot;: &quot;^3.2.0&quot;,
+  &quot;vite&quot;: &quot;^3.2.3&quot;
+&#125;
+</code></pre>
+<p>那么如何让我们vue2的项目也能用到Vite呢？那么需要一个Vite插件 <a target="_blank" rel="noopener" href="https://github.com/underfin/vite-plugin-vue2">vite-plugin-vue2</a></p>
+<p>如果是老的webpack项目就删除掉以下几个文件，当然删之前先得看下环境配置，以及是否有一些特殊的配置项，这个根据自己的项目实际情况来。<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WX20221114-165721%402x.png" alt="image.png"></p>
+<p>如果是vue-cli脚手架项目就把vue.config.js改为vite.config.js，webpack项目新增这个配置文件。</p>
+<p>然后根据自己项目的环境配置新建环境配置文件：<br>.evn.development<br>.env.qa<br>.env.pre<br>.env.production</p>
+<p>环境文件内主要配置我们各个环境的api域名地址，如：<br>NODE_ENV&#x3D;’development’<br>VITE_APP_URL&#x3D;’<a target="_blank" rel="noopener" href="http://dev.domainapi.com/&#39;">http://dev.domainapi.com/&#39;</a><br>这里必须以VITE_开头，熟悉vue-cli脚手架的可能知道是VUE_开头的<br>如：VUE_APP_URL&#x3D;’<a target="_blank" rel="noopener" href="http://dev.domainapi.com/&#39;">http://dev.domainapi.com/&#39;</a></p>
+<p>然后再在项目中调整配置api，可以用import.meta.env.VITE_APP_API_URL来获取配置文件。</p>
+<p>然后调整package.json<br>删除webpack相关依赖。<br>删除@vue&#x2F;cli-相关依赖。</p>
+<p>删除package-lock.json</p>
+<p>安装vite和vite-plugin-vue2</p>
+<pre><code class="bash">npm install vite@latest
+npm install vite-plugin-vue2
+</code></pre>
+<p>注：在vite项目里是不支持require引用依赖库的，必须全部调整为import引用。</p>
+<p>把我们的项目结构调整为类似如下结构：<br><img src="https://vanterc.oss-cn-beijing.aliyuncs.com/blog/h/WX20221114-165809%402x.png" alt="image.png"></p>
+<p>package.json部分如下:</p>
+<pre><code class="json">...
+&quot;scripts&quot;: &#123;
+  &quot;dev&quot;: &quot;vite&quot;,
+  &quot;build:dev&quot;: &quot;vite build --mode development&quot;,
+  &quot;build:qa&quot;: &quot;vite build --mode qa&quot;,
+  &quot;build:pre&quot;: &quot;vite build --mode pre&quot;,
+  &quot;build:prod&quot;: &quot;vite build --mode production&quot;,
+  &quot;build&quot;: &quot;npm run build:prod&quot;,
+  &quot;preview&quot;: &quot;vite preview&quot;
+&#125;,
+&quot;dependencies&quot;: &#123;
+  ...
+  &quot;vue&quot;: &quot;^2.6.11&quot;,
+  &quot;axios&quot;: &quot;^0.15.3&quot;,
+  &quot;iview&quot;: &quot;2.13.1&quot;,
+  &quot;vue-router&quot;: &quot;^2.8.1&quot;,
+  &quot;vuex&quot;: &quot;^2.5.0&quot;,
+&#125;,
+&quot;devDependencies&quot;: &#123;
+  ...
+  &quot;vite-plugin-vue2&quot;: &quot;^2.0.2&quot;,
+  &quot;vite&quot;: &quot;^3.2.3&quot;
+&#125;
+</code></pre>
+<p>index.html如下：</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- built files will be auto injected --&gt;
+  &lt;/body&gt;
+</code></pre>
+<p>vite.config.js如下：</p>
+<pre><code class="js">import &#123; createVuePlugin &#125; from &quot;vite-plugin-vue2&quot;;
+import viteCompression from &#39;vite-plugin-compression&#39;; // gizp压缩
+import &#123; defineConfig &#125; from &quot;vite&quot;;
+import path from &quot;path&quot;;
+
+/**
+ * @param newFilename &#123;string&#125;
+ * @returns &#123;import(&#39;vite&#39;).Plugin&#125;
+ * @des 可以重命名打包后index.html文件名
+ */
+ const renameIndexPlugin = newFilename =&gt; &#123;
+  if (!newFilename) return
+
+  return &#123;
+    name: &#39;renameIndex&#39;,
+    enforce: &#39;post&#39;,
+    generateBundle(options, bundle) &#123;
+      const indexHtml = bundle[&#39;index.html&#39;]
+      indexHtml.fileName = newFilename
+    &#125;,
+  &#125;
+&#125;
+
+export default defineConfig(&#123;
+    base: &#39;/dist/&#39;,
+    plugins: [
+      createVuePlugin(),
+      viteCompression(),
+      renameIndexPlugin(&#39;index_prod.html&#39;)
+    ],
+    envDir:&#39;./env&#39;,
+    server: &#123;
+      host: &#39;localhost&#39;,
+      port: 8080,
+      open: true
+    &#125;,
+    build:&#123;
+      outDir: &#39;dist&#39;,
+      assetsDir: &#39;static&#39;,
+    &#125;,
+    resolve: &#123;
+      alias: [
+        &#123;
+          find: &#39;@&#39;,
+          replacement: path.resolve(__dirname, &quot;src&quot;),
+        &#125;
+      ]
+    &#125;
+&#125;)
+</code></pre>
+<p>这是根据我项目实际配置的，<br>打包后域名路径必须为dist，正常来说默认不需要配置base项，<br>打包后的index.html会改为index_prod.html，正常来说可以去掉renameIndexPlugin()<br>vite-plugin-compression插件为启用gzip压缩，更好的减少我们构建后项目资源的体积。<br>其他具体的配置项也可以去参考Vite官网。</p>
+<p>最后重新删除package-lock.json和node_modules，执行npm install</p>
+<p>运行npm run dev<br>查看报错情况，根据提示一步一步修改问题。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+  
+    <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=vue2老项目升级Vite优化提升16倍 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2022%2F11%2F17%2Fvue%25E8%2580%2581%25E9%25A1%25B9%25E7%259B%25AE%25E5%258D%2587%25E7%25BA%25A7Vite%25E4%25BC%2598%25E5%258C%2596%25E6%258F%2590%25E5%258D%258716%25E5%2580%258D%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=vue2老项目升级Vite优化提升16倍 - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2022%2F11%2F17%2Fvue%25E8%2580%2581%25E9%25A1%25B9%25E7%259B%25AE%25E5%258D%2587%25E7%25BA%25A7Vite%25E4%25BC%2598%25E5%258C%2596%25E6%258F%2590%25E5%258D%258716%25E5%2580%258D%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=vue2老项目升级Vite优化提升16倍 - VANTERC个人博客&url=https://vanterc.github.io/2022/11/17/vue%E8%80%81%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7Vite%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%8716%E5%80%8D/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://www-vanterc-com.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/17/vue%E8%80%81%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7Vite%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%8716%E5%80%8D/">vue2老项目升级Vite优化提升16倍</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/23/2%E5%88%86%E9%92%9F%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E6%88%96%E5%8D%9A%E5%AE%A2/">2分钟教你如何免费搭建属于自己的网站或博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91/">微信小程序云开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/28/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91cloudbase%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%8F%91%E5%B8%83/">利用腾讯云cloudbase快速搭建vue项目到发布</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            VANTERC个人博客 &copy; 2022<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18030908号</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
