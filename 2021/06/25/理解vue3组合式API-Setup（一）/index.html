@@ -17,7 +17,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "理解vue3组合式API  Setup（一） | VANTERC个人博客"  />
     <meta property="og:description" content= "&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;" />
-    <meta property="og:url" content="https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html" />
+    <meta property="og:url" content="https://vanterc.com/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="VANTERC" />
     <meta property="article:publisher" content="" />
@@ -29,12 +29,12 @@
             "description": "&lt;p&gt;&lt;a href=&#34;https://v3.cn.vuejs.org/&#34;&gt;vue3.0&lt;/a&gt;发布也有一段时间了，用了那么久vue，3.0相比较2.0最大的区别就在于引入了—–组合式API。&lt;br&gt;尝试通过尤大最新发布的前端构建工具&lt;a href=&#34;https://cn.vitejs.dev/&#34;&gt;Vite&lt;/a&gt;(下一代前端编译构建工具)，新建了一个vue3.0的初始项目，很快就发现了与2.0的不同之处如下图：&lt;/p&gt;",
             "author": { "@type": "Person", "name": "VANTERC" },
             "@type": "BlogPosting",
-            "url": "https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html",
+            "url": "https://vanterc.com/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html",
             "publisher": {
             "@type": "Organization",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://vanterc.github.iohttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
+                "url": "https://vanterc.comhttps://vanterc.oss-cn-beijing.aliyuncs.com/202106290021.JPG"
             },
             "name": "VANTERC"
             },
@@ -42,7 +42,7 @@
             "datePublished": "2021-06-25T08:18:00.000Z",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html"
+                "@id": "https://vanterc.com/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/index.html"
             },
             "@context": "http://schema.org"
         }
@@ -179,7 +179,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clb4sxuy8000h7184dwrb5gkz" class="article article-type-post" itemscope
+    <article id="post-clb4t2ewt000hdz845x9fclqk" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -303,15 +303,15 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
+            href="https://twitter.com/share?text=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https%3A%2F%2Fvanterc.com%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
             <ion-icon name="logo-twitter"></ion-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&u=https%3A%2F%2Fvanterc.github.io%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
+            href="https://www.facebook.com/sharer.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&u=https%3A%2F%2Fvanterc.com%2F2021%2F06%2F25%2F%25E7%2590%2586%25E8%25A7%25A3vue3%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258FAPI-Setup%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589%2F">
             <ion-icon name="logo-facebook"></ion-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https://vanterc.github.io/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/&pic=">
+            href="https://service.weibo.com/share/share.php?title=理解vue3组合式API  Setup（一） - VANTERC个人博客&url=https://vanterc.com/2021/06/25/%E7%90%86%E8%A7%A3vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI-Setup%EF%BC%88%E4%B8%80%EF%BC%89/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
