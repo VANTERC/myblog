@@ -126,6 +126,7 @@ aomori_social:
     icon: logo-github
     url: https://github.com/VANTERC
 aomori_baidu_sitepush: true
+aomori_baidu_analytics: 'dc81dc0e8757b531a37e88bedf38d484'
 aomori_busuanzi: true
 aomori_favicon: 🎮
 # aomori_disqus_shortname: 'www-vanterc-com'
