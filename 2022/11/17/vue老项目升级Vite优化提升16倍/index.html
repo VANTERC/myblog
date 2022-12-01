@@ -64,9 +64,9 @@
     
 
     
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     
-    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+
     
 
     
@@ -81,19 +81,17 @@
         window.isPost = true
         window.aomori = {
             
-            
-            
-            disqusjs: {
-              enable: true,
-              shortname: "www-vanterc-com",
-              siteName: "www.vanterc.com",
-              api: "https://disqus.skk.moe/disqus/",
-              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
-              nesting: "4",
-              nocomment: "这里冷冷清清的，一条评论都没有",
-              admin: "VANTERC",
-              adminLabel: "",
+            gitalk: {
+                enable: true,
+                clientID: "cca162d3fc732f31c82b",
+                clientSecret: "70b0fbe1d7d3991b51337e0e2742e9dd5e64d85c",
+                repo: "blog-gitalk",
+                owner: "GitHub repo owner",
+                admin: ["VANTERC","GitHub repo owner and collaborators",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
             },
+            
+            
             
         }
         window.aomori_logo_typed_animated = true
@@ -181,7 +179,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clb4rgkty000ca0841offc28g" class="article article-type-post" itemscope
+    <article id="post-clb4sd9g2000ckv84eu8if55r" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -368,7 +366,7 @@ export default defineConfig(&#123;
 <nav class="article-nav">
   
     <a href="/2022/12/01/linux%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84gitlab%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">prossimo</div>
+      <div class="article-nav-caption">下一篇</div>
       <div class="article-nav-title">
         
           linux下搭建属于自己的gitlab代码仓库
@@ -378,7 +376,7 @@ export default defineConfig(&#123;
   
   
     <a href="/2022/11/02/ios%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E5%85%8D%E8%B4%B9%E7%9C%8B%E5%85%A8%E7%BD%91%E7%88%B1%E5%A5%87%E8%89%BA%E3%80%81%E8%85%BE%E8%AE%AFVIP%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%EF%BC%81%EF%BC%81%EF%BC%81/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">precedente</div>
+      <div class="article-nav-caption">上一篇</div>
       <div class="article-nav-title">ios平板手机免登录免费看全网爱奇艺、腾讯VIP视频电影教程！！！</div>
     </a>
   
@@ -386,7 +384,7 @@ export default defineConfig(&#123;
 
 
     <section class="share">
-        <div class="share-title">share</div>
+        <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=vue2老项目升级Vite优化提升16倍 - VANTERC个人博客&url=https%3A%2F%2Fvanterc.github.io%2F2022%2F11%2F17%2Fvue%25E8%2580%2581%25E9%25A1%25B9%25E7%259B%25AE%25E5%258D%2587%25E7%25BA%25A7Vite%25E4%25BC%2598%25E5%258C%2596%25E6%258F%2590%25E5%258D%258716%25E5%2580%258D%2F">
             <ion-icon name="logo-twitter"></ion-icon>
@@ -406,28 +404,13 @@ export default defineConfig(&#123;
 
 
 
-<section class="comments comments-disqus">
-    <div id="disqus_thread"></div>
-    <script>
-        ;(function () {
-            // DON'T EDIT BELOW THIS LINE
-            var d = document,
-                s = d.createElement('script')
-            s.src =
-                'https://www-vanterc-com.disqus.com/embed.js'
-            s.setAttribute('data-timestamp', +new Date())
-            ;(d.head || d.body).appendChild(s)
-        })()
-    </script>
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
 </section>
-
-
-
-<section class="comments comments-disqusjs">
-    <div id="disqus_thread"></div>
-</section>
-
-
 
 
 
@@ -532,9 +515,9 @@ export default defineConfig(&#123;
 <script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
 
 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
-<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
 
 
 

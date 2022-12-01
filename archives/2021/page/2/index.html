@@ -29,9 +29,9 @@
     
 
     
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     
-    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+
     
 
     
@@ -46,19 +46,17 @@
         window.isPost = false
         window.aomori = {
             
-            
-            
-            disqusjs: {
-              enable: true,
-              shortname: "www-vanterc-com",
-              siteName: "www.vanterc.com",
-              api: "https://disqus.skk.moe/disqus/",
-              apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh",
-              nesting: "4",
-              nocomment: "这里冷冷清清的，一条评论都没有",
-              admin: "VANTERC",
-              adminLabel: "",
+            gitalk: {
+                enable: true,
+                clientID: "cca162d3fc732f31c82b",
+                clientSecret: "70b0fbe1d7d3991b51337e0e2742e9dd5e64d85c",
+                repo: "blog-gitalk",
+                owner: "GitHub repo owner",
+                admin: ["VANTERC","GitHub repo owner and collaborators",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
             },
+            
+            
             
         }
         window.aomori_logo_typed_animated = true
@@ -186,7 +184,7 @@
 
   <nav class="pagination">
     
-    <a class="extend prev" rel="prev" href="/archives/2021/">precedente</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/archives/2021/">上一页</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -276,9 +274,9 @@
 <script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
 
 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
-<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
 
 
 
