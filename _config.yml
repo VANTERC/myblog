@@ -145,8 +145,7 @@ aomori_gitalk:
   clientID: cca162d3fc732f31c82b
   clientSecret: 70b0fbe1d7d3991b51337e0e2742e9dd5e64d85c
   repo: blog-gitalk
-  owner: GitHub repo owner
+  owner: VANTERC
   admin: 
     - VANTERC
-    - GitHub repo owner and collaborators
   distractionFreeMode: true
