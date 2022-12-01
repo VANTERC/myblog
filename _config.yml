@@ -141,6 +141,7 @@ aomori_favicon: 🎮
 #   admin: "VANTERC"
 #   adminLabel: ""
 
+aomori_search_algolia: true
 algolia:
     applicationID: 'DIWMFA0QLW'
     apiKey: '9f8498e21f00db3940afe5214bf151d5'
