@@ -128,14 +128,25 @@ aomori_social:
 aomori_baidu_sitepush: true
 aomori_busuanzi: true
 aomori_favicon: 🎮
-aomori_disqus_shortname: 'www-vanterc-com'
-aomori_disqusjs:
+# aomori_disqus_shortname: 'www-vanterc-com'
+# aomori_disqusjs:
+#   enable: true
+#   shortname: "www-vanterc-com"
+#   siteName: "www.vanterc.com"
+#   api: "https://disqus.skk.moe/disqus/"
+#   apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh"
+#   nesting: 4
+#   nocomment: "这里冷冷清清的，一条评论都没有"
+#   admin: "VANTERC"
+#   adminLabel: ""
+
+aomori_gitalk:
   enable: true
-  shortname: "www-vanterc-com"
-  siteName: "www.vanterc.com"
-  api: "https://disqus.skk.moe/disqus/"
-  apikey: "RxQ63Nu5DSryZYyy0Sf86QocnzkAkEj7HqtLu3kVSXykV3spxLdngurBuBR37oCh"
-  nesting: 4
-  nocomment: "这里冷冷清清的，一条评论都没有"
-  admin: "VANTERC"
-  adminLabel: ""
+  clientID: cca162d3fc732f31c82b
+  clientSecret: 70b0fbe1d7d3991b51337e0e2742e9dd5e64d85c
+  repo: blog-gitalk
+  owner: GitHub repo owner
+  admin: 
+    - VANTERC
+    - GitHub repo owner and collaborators
+  distractionFreeMode: true
