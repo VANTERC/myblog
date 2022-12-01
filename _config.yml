@@ -141,6 +141,11 @@ aomori_favicon: 🎮
 #   admin: "VANTERC"
 #   adminLabel: ""
 
+algolia:
+    applicationID: 'DIWMFA0QLW'
+    apiKey: '9f8498e21f00db3940afe5214bf151d5'
+    indexName: 'vanterc'
+
 aomori_gitalk:
   enable: true
   clientID: cca162d3fc732f31c82b
